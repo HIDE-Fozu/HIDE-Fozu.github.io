@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>勤怠・給与のバックオフィスSaaS | Fozu</title>
+<meta name="description" content="打刻から勤怠集計・給与明細までを一気通貫で扱うマルチテナントSaaS。PostgreSQLのRow Level Securityでテナントを分離し、350件の自動テストで検証しています。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fozu">
+<meta property="og:title" content="勤怠・給与のバックオフィスSaaS | Fozu">
+<meta property="og:description" content="打刻から勤怠集計・給与明細までを一気通貫で扱うマルチテナントSaaS。Next.js 16 / PostgreSQL 16で開発中です。">
+<meta property="og:image" content="https://fozu.jp/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html"><span class="mark" aria-hidden="true"></span>Fozu</a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="../../index.html">ホーム</a></li>
+        <li><a href="../index.html" aria-current="page">制作実績</a></li>
+        <li><a href="../../apps/index.html">アプリ</a></li>
+        <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap page-head">
+    <span class="eyebrow">Web SaaS</span>
+    <h1>勤怠・給与のバックオフィスSaaS</h1>
+    <p class="lead">打刻から勤怠の集計、給与明細の確定と本人への公開までを、ひとつづきの流れとして扱う業務システムです。</p>
+    <dl class="detail-meta">
+      <div><dt>種別</dt><dd>Webアプリケーション（マルチテナント）</dd></div>
+      <div><dt>技術</dt><dd>Next.js 16 (App Router)・React 19・TypeScript・Drizzle ORM・PostgreSQL 16</dd></div>
+      <div><dt>状態</dt><dd><span class="status">開発中</span></dd></div>
+    </dl>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>概要</h2>
+      <p>経理として給与計算に関わるなかで、打刻・勤怠・給与がそれぞれ別の道具に分かれていることが手戻りの原因になっていると感じました。そこで、打刻した記録がそのまま日々の勤怠に積み上がり、その月を締めるとその数字から給与明細の下書きが起きる、という流れをそのまま画面にしています。</p>
+      <p>複数の利用先が同じ仕組みを使うことを前提に、データベースの行単位でテナントを分ける構成を最初から入れました。控除のように人が判断する部分は手入力に残し、機械が確実に出せる部分だけを自動計算しています。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>主な機能</h2>
+      <ul class="feature-list">
+        <li><b>打刻</b> — 勤務先と補足を添えて出勤・退勤を記録します。打刻は追記だけで上書きせず、送信ごとの識別子に一意制約を掛けて、通信のやり直しで二重に届いた打刻を1件として吸収します。</li>
+        <li><b>勤怠集計</b> — 実働と残業を1分単位・丸めなしで集計し、深夜と法定休日を区分します。打刻漏れ・24時間を超える勤務・6時間超で休憩なし・日跨ぎなど9種類のフラグを自動で付け、要確認の日を洗い出します。月次を確定すると編集できなくなり、必要なら再オープンできます。</li>
+        <li><b>給与明細</b> — 月給と時給それぞれの割増（残業1.25・法定休日1.35・深夜0.25）で下書きを作ります。控除は手入力で確定し、確定した明細だけが本人の画面に出ます。印刷用の表示も用意しています。</li>
+        <li><b>固定残業の下限チェック</b> — 固定残業手当が、その固定残業時間に対する労働基準法37条の割増額を下回る場合に、金額を書き換えずに「不足」として示します。</li>
+        <li><b>申告と承認</b> — 打刻漏れや時刻の修正を本人が申告し、管理者が承認すると勤怠へ反映されます。証跡の画像も添付できます。</li>
+        <li><b>マルチテナント</b> — 単一のデータベースに全テーブルのテナントIDを持たせ、PostgreSQLのRow Level Securityで行単位に分離しています。アプリからのデータベース操作は、必ず権限を落としたロールに切り替えてから実行します。</li>
+        <li><b>監査の記録</b> — 給与明細の確定・再オープン・編集は履歴として残ります。金額はすべて整数の円で扱い、浮動小数点数を使いません。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>技術と検証</h2>
+      <p>画面とサーバー処理はNext.js 16のApp RouterとServer Actionsにまとめ、React 19とTypeScriptで書いています。データベースはPostgreSQL 16で、スキーマとマイグレーションはDrizzle ORMで管理しています。CSSはフレームワークを使わず自分で書いています。</p>
+      <p>勤怠の集計と給与の計算は、データベースに依存しない純粋な関数として切り出しました。おかげで、打刻の並びを入力すれば日次・週次・月次の結果が返る形になり、テストから直接呼べます。</p>
+      <p>テストはVitestで31ファイル・350件が全て通っています。関数単体の検証だけでなく、実際のPostgreSQLに接続して、Row Level Securityがテナントをまたいだ読み取りを止めること、同じ打刻を二重に送っても1件になることも確認しています。ソースは約8,000行、テストは約5,200行です。</p>
+      <p class="note">経費の取り込みと会計（仕訳・元帳）は、モジュールとして追加する計画はありますが現時点では未実装です。このページに書いた機能は、実際に動かして確認できたものだけを載せています。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>画面</h2>
+      <ul class="shots shots-native">
+        <li>
+          <figure>
+            <img src="../../assets/img/bo-payslip.png" width="760" height="1120" alt="従業員の給与明細画面。支給・控除・立替金の内訳と差引支給額が縦に並んでいる">
+            <figcaption>従業員が見る給与明細。確定した月の明細だけが本人の画面に出ます。月めくりで過去の月もたどれます。</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="../../assets/img/bo-attendance.png" width="1280" height="900" alt="管理者の勤怠マトリクス画面。従業員を縦、日付を横に並べた表に実働時間が入っている">
+            <figcaption>管理者の勤怠マトリクス。従業員×日で実働と残業を並べ、要確認の日には印が付きます。月次を確定するとその月は編集できなくなります。</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="../../assets/img/bo-punch.png" width="1280" height="1260" alt="従業員の打刻画面。勤務先の選択、出勤と退勤のボタン、最近の打刻一覧が並んでいる">
+            <figcaption>従業員の打刻。勤務先と補足を選んで出勤・退勤を記録し、その下に本日と最近の打刻が並びます。</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="../../assets/img/bo-payroll.png" width="1280" height="895" alt="管理者の給与明細一覧画面。氏名ごとに総支給・控除・差引支給額と状態が並んだ表">
+            <figcaption>月次の給与明細一覧。総支給・控除・差引支給額と状態を並べ、ここから給与計算を実行します。</figcaption>
+          </figure>
+        </li>
+      </ul>
+      <p class="note">画面はすべて架空のデモデータです。</p>
+      <a class="backlink" href="../index.html">制作実績へ戻る</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="copyright">&copy; 2026 Fozu</p>
+    <ul class="footer-links">
+      <li><a href="../../index.html">ホーム</a></li>
+      <li><a href="../index.html">制作実績</a></li>
+      <li><a href="../../apps/index.html">アプリ</a></li>
+      <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub (HIDE-Fozu)</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
