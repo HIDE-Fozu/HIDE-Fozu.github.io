@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>多支社対応の勤怠打刻Webアプリ | Fozu</title>
+<meta name="description" content="複数支社の従業員がブラウザから出退勤を打刻するWebアプリ。打刻漏れ申請、役割別の管理者ログイン、打刻の監査ログを備えています。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fozu">
+<meta property="og:title" content="多支社対応の勤怠打刻Webアプリ | Fozu">
+<meta property="og:description" content="支社ごとのアカウントで共有端末にログインし、従業員が一覧から自分を選んで打刻するWebアプリ。CodeIgniter 4 / PHP 8.2 / MariaDBで開発中です。">
+<meta property="og:image" content="https://fozu.jp/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html"><span class="mark" aria-hidden="true"></span>Fozu</a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="../../index.html">ホーム</a></li>
+        <li><a href="../index.html" aria-current="page">制作実績</a></li>
+        <li><a href="../../apps/index.html">アプリ</a></li>
+        <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap page-head">
+    <span class="eyebrow">Webアプリ</span>
+    <h1>多支社対応の勤怠打刻Webアプリ</h1>
+    <p class="lead">支社ごとのアカウントで共有端末にログインし、従業員が一覧から自分を選んで出退勤を記録するWebアプリです。</p>
+    <dl class="detail-meta">
+      <div><dt>種別</dt><dd>Webアプリケーション（多支社対応）</dd></div>
+      <div><dt>技術</dt><dd>CodeIgniter 4.6・PHP 8.2・MariaDB（MySQLi）</dd></div>
+      <div><dt>状態</dt><dd><span class="status">開発中</span></dd></div>
+    </dl>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>概要</h2>
+      <p>複数の支社を持つ職場で、従業員がブラウザから出退勤を記録するためのWebアプリです。一人ひとりにアカウントを配るのではなく、支社ごとのアカウントで共有の端末にログインし、従業員は一覧から自分の名前を選んで打刻します。</p>
+      <p>打刻は「誰が」だけでなく「どの支社で」も一緒に記録するため、他支社への応援勤務もそのまま履歴に残ります。管理側は打刻とは別系統のログインを設け、役割に応じて閲覧と編集の範囲を分けています。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>主な機能</h2>
+      <ul class="feature-list">
+        <li><b>支社アカウントでの打刻</b> — 支社のアカウントで端末にログインし、従業員は一覧から自分を選んで出勤・退勤を記録します。一覧は自支社の従業員を先に並べ、他支社の従業員は薄く表示して応援勤務の打刻にも対応します。</li>
+        <li><b>打刻の状態判定</b> — 同じ支社で退勤していない打刻が残っているかどうかで、出勤と退勤のどちらを受け付けるかを切り替えます。二重の出勤や、対応する出勤のない退勤は記録しません。</li>
+        <li><b>記録と通知</b> — 打刻ごとに送信元のIPアドレスを残します。支社ごとに設定した宛先URLへ打刻の内容を送信でき、宛先は複数指定できます。打刻したときは確認の音を鳴らします。</li>
+        <li><b>打刻漏れの申請</b> — 対象の従業員・日付・種別・補足を選んで申請すると、未処理の状態で登録されます。</li>
+        <li><b>月次タイムシート</b> — 月・支社・従業員を選び、日ごとの勤務、管理者の確認状態、欠勤・遅刻・早退のマーク、申請の有無を並べて確認します。画面はJSONを返すAPIを呼び出して組み立てています。</li>
+        <li><b>打刻履歴と編集</b> — 期間・支社・氏名やカナ・社員番号の部分一致で打刻を検索し、行ごとに時刻を修正できます。修正すると、変更前後の時刻・編集した人・理由を監査ログに残します。</li>
+        <li><b>管理者の役割</b> — 管理者は全社・支社管理者・閲覧のみの3種類です。確認状態の設定や打刻の編集は役割によって制限され、全社の管理者は全支社を、支社の管理者は自支社だけを扱います。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>技術と現状</h2>
+      <p>CodeIgniter 4.6とPHP 8.2で作り、データベースはMariaDB（MySQLiドライバ・utf8mb4）を使っています。画面は素のHTMLとJavaScriptで、JSONを返すAPIをfetchで呼び出して組み立てます。JavaScriptのフレームワークは使っていません。</p>
+      <p>ログインはセッションと、bcryptによるパスワードのハッシュ化・照合で行い、打刻の画面と管理の画面はそれぞれ別のフィルタで保護しています。管理者の操作は、さらに役割を見るフィルタで絞っています。データベースは支社・従業員・打刻・申請・確認状態・監査ログなど9つのテーブルで構成しています。</p>
+      <p>規模はアプリ本体のPHPが約7,100行で、そのうち自分で書いたコントローラ・モデル・フィルタが約990行、画面のテンプレートが約1,470行です。</p>
+      <p class="note">現状の課題として、管理側の月次タイムシートと打刻履歴の2画面は、スクリプトの書き方の誤りと画面ファイルの置き場所の誤りにより、いまブラウザで正しく表示されません（修正中です）。下に載せた画面写真は、実際に動かして確認できた打刻・申請・ログインだけにしています。勤怠の計算に対する自動テストも、まだ用意できていません。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>画面</h2>
+      <ul class="shots shots-native">
+        <li>
+          <figure>
+            <img src="../../assets/img/kintai-punch.png" width="1280" height="380" alt="打刻画面。左に従業員の一覧、右に支社名と選択中の従業員名、現在時刻、出勤と退勤のボタンが並んでいる">
+            <figcaption>打刻の画面。左の一覧から従業員を選ぶと、右に名前と現在時刻が出ます。退勤していない打刻が残っていない状態なので、出勤だけが押せます。</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="../../assets/img/kintai-apply.png" width="1280" height="500" alt="打刻漏れ等の申請フォーム。対象従業員、対象日、申請項目、補足の入力欄と送信ボタンが並んでいる">
+            <figcaption>打刻漏れの申請。対象の従業員と日付、申請の種別、補足を選んで送ると、未処理の状態で登録されます。</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="../../assets/img/kintai-login.png" width="640" height="320" alt="支社ログイン画面。IDとパスワードの入力欄、ログインボタン、管理者ログインへのリンクが並んでいる">
+            <figcaption>支社のログイン。打刻用の入り口で、管理者は下のリンクから別のログイン画面へ進みます。</figcaption>
+          </figure>
+        </li>
+      </ul>
+      <p class="note">画面はすべて架空のデモデータです。</p>
+      <a class="backlink" href="../index.html">制作実績へ戻る</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="copyright">&copy; 2026 Fozu</p>
+    <ul class="footer-links">
+      <li><a href="../../index.html">ホーム</a></li>
+      <li><a href="../index.html">制作実績</a></li>
+      <li><a href="../../apps/index.html">アプリ</a></li>
+      <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub (HIDE-Fozu)</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
