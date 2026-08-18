@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家計簿 | Fozu</title>
+<meta name="description" content="カレンダーを起点に、その日の支出・収入を確認してすばやく入力できるiOS向け家計簿アプリ。Flutter製。財務データを自動的に端末外へ送らない設計です。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fozu">
+<meta property="og:title" content="家計簿 | Fozu">
+<meta property="og:description" content="カレンダー起点で日々の収支を入力・確認できるiOS向け家計簿アプリ。財務データを自動的に端末外へ送らない設計です。">
+<meta property="og:image" content="https://fozu.jp/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html"><span class="mark" aria-hidden="true"></span>Fozu</a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="../../index.html">ホーム</a></li>
+        <li><a href="../../works/index.html">制作実績</a></li>
+        <li><a href="../index.html" aria-current="page">アプリ</a></li>
+        <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap page-head">
+    <span class="eyebrow">Mobile App</span>
+    <h1>家計簿</h1>
+    <p class="lead">カレンダーを起点に、その日の支出・収入を確認して、そのまますばやく入力できる個人向けの家計簿アプリです。</p>
+    <dl class="detail-meta">
+      <div><dt>種別</dt><dd>iOSアプリ</dd></div>
+      <div><dt>技術</dt><dd>Flutter / Dart・Riverpod・SQLite (drift)</dd></div>
+      <div><dt>状態</dt><dd><span class="status status-live">App Store公開中</span></dd></div>
+    </dl>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>概要</h2>
+      <p>家計簿が続かない理由の多くは「入力が面倒」であることだと考え、月カレンダーの画面から日付をたどってそのまま入力できる形にしました。その日にいくら使ったのかがカレンダー上で見えるので、入力と振り返りが同じ画面で完結します。</p>
+      <p>設計上の原則として、アプリは財務データを自動的・バックグラウンド的に外部サービスへ送信しません。データが端末の外に出るのは、利用者自身が明示的にエクスポート操作をしたときだけです。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>主な機能</h2>
+      <ul class="feature-list">
+        <li><b>カレンダー起点の収支入力</b> — 月カレンダーで日ごとの収支を確認し、その日を選んでそのまま記録できます。</li>
+        <li><b>内訳（サブカテゴリ）の記録</b> — カテゴリの下にさらに内訳を持たせて、何にいくら使ったのかを細かく残せます。</li>
+        <li><b>端末内で完結するデータ管理</b> — 記録は端末内のSQLite（drift）に保存します。自動送信・バックグラウンド送信は行いません。</li>
+        <li><b>バックアップの書き出しと読み込み</b> — 利用者が明示的に操作したときだけ、データをファイルとして持ち出せます。</li>
+        <li><b>読みやすさの調整</b> — カレンダー上の金額表示や配色テーマを、画面が詰まらないように整えています。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>画面</h2>
+      <p>公開版の画面写真は準備中です。差し替え次第このページに掲載します。</p>
+      <p class="note">App Store上の掲載名とストアページへのリンクは、確認のうえ追記予定です。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>お問い合わせ</h2>
+      <p>このページは本アプリのサポートページを兼ねています。不具合報告・お問い合わせは <a href="https://github.com/HIDE-Fozu" rel="noopener">GitHubプロフィール</a> からお願いします。</p>
+      <a class="backlink" href="../index.html">アプリ一覧へ戻る</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="copyright">&copy; 2026 Fozu</p>
+    <ul class="footer-links">
+      <li><a href="../../index.html">ホーム</a></li>
+      <li><a href="../../works/index.html">制作実績</a></li>
+      <li><a href="../index.html">アプリ</a></li>
+      <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub (HIDE-Fozu)</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

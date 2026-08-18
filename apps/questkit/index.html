@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuestKit | Fozu</title>
+<meta name="description" content="FPSゲーム「Escape from Tarkov」のタスク進行を管理するFlutter製モバイルアプリ。マップを選ぶと、そこで進められる目標だけが並びます。オフラインファースト設計。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fozu">
+<meta property="og:title" content="QuestKit | Fozu">
+<meta property="og:description" content="マップを選ぶと、そこで進められるタスクと目標だけが並ぶ。Escape from Tarkov 向けの非公式タスク管理アプリ。">
+<meta property="og:image" content="https://fozu.jp/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html"><span class="mark" aria-hidden="true"></span>Fozu</a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="../../index.html">ホーム</a></li>
+        <li><a href="../../works/index.html">制作実績</a></li>
+        <li><a href="../index.html" aria-current="page">アプリ</a></li>
+        <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap page-head">
+    <span class="eyebrow">Mobile App</span>
+    <h1>QuestKit</h1>
+    <p class="lead">FPSゲーム「Escape from Tarkov」のタスク進行を管理するモバイルアプリです。マップを選ぶと、いまそのマップで進められるタスクと目標だけが並びます。</p>
+    <dl class="detail-meta">
+      <div><dt>種別</dt><dd>モバイルアプリ（iOS / Android）</dd></div>
+      <div><dt>技術</dt><dd>Flutter / Dart・Riverpod</dd></div>
+      <div><dt>状態</dt><dd><span class="status">開発中</span></dd></div>
+    </dl>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>概要</h2>
+      <p>このゲームのタスクは数百件あり、しかも「どのタスクがいま解放されているか」がプレイヤーレベル・前提タスク・所属派閥で変わります。ゲーム内でも攻略サイトでも「今から入るマップで、自分は何をすればいいのか」を一望しづらいのが出発点でした。</p>
+      <p>そこで、ホーム画面をマップ起点にしました。これから入るマップを選ぶと、解放済みのタスクのうちそのマップで進められる目標だけが抽出されます。データは無料で公開されている tarkov.dev のAPIから取得しますが、起動のたびに通信するのではなく、アプリに同梱したスナップショットを起点に、利用者が任意のタイミングで同期する形にしています。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>主な機能</h2>
+      <ul class="feature-list">
+        <li><b>マップ起点のホーム</b> — マップを選ぶと、そこで進行できるタスクと目標だけに絞り込んで表示します。</li>
+        <li><b>解放条件の自動判定</b> — 前提タスク・プレイヤーレベル・派閥の条件から、いま受注できるタスクを判定します。</li>
+        <li><b>持ち帰りアイテムの集計</b> — 進行中タスクで必要になるアイテムを横断集計し、「拾ったら取っておくべきもの」が分かります。</li>
+        <li><b>ハイドアウトの必要素材管理</b> — 各施設のレベルと手持ち数を入力すると、次のレベルまでに足りない数を集計します。</li>
+        <li><b>オフラインファースト</b> — アプリ内蔵のデータで起動でき、通信は利用者が実行する手動同期のときだけ行います。</li>
+        <li><b>日本語・英語の切り替え</b> — 目標の文言は、日本語UIで読みやすいように短く言い換えたものを用意しています。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>画面</h2>
+      <p>画面写真は準備中です。公開できる状態になり次第、このページに掲載します。</p>
+      <p class="note">「Escape from Tarkov」は Battlestate Games の商標です。QuestKit は同社とは関係のない、個人制作の非公式ツールです。ゲームのデータは公開APIである tarkov.dev から取得しています。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>お問い合わせ</h2>
+      <p>このページは本アプリのサポートページを兼ねています。不具合報告・お問い合わせは <a href="https://github.com/HIDE-Fozu" rel="noopener">GitHubプロフィール</a> からお願いします。</p>
+      <a class="backlink" href="../index.html">アプリ一覧へ戻る</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="copyright">&copy; 2026 Fozu</p>
+    <ul class="footer-links">
+      <li><a href="../../index.html">ホーム</a></li>
+      <li><a href="../../works/index.html">制作実績</a></li>
+      <li><a href="../index.html">アプリ</a></li>
+      <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub (HIDE-Fozu)</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

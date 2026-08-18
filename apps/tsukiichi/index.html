@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>つきいち管理 | Fozu</title>
+<meta name="description" content="歯ブラシ交換やマットレスの向き替えなど、月一など低頻度で忘れがちな生活タスクを記録するだけで次回の期日と通知を管理するiOSアプリ。Flutter製・完全オフライン。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fozu">
+<meta property="og:title" content="つきいち管理 | Fozu">
+<meta property="og:description" content="低頻度で忘れがちな生活タスクを、記録するだけで次回の期日と通知まで自動管理するiOSアプリ。Flutter製・完全オフライン。">
+<meta property="og:image" content="https://fozu.jp/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html"><span class="mark" aria-hidden="true"></span>Fozu</a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="../../index.html">ホーム</a></li>
+        <li><a href="../../works/index.html">制作実績</a></li>
+        <li><a href="../index.html" aria-current="page">アプリ</a></li>
+        <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap page-head">
+    <span class="eyebrow">Mobile App</span>
+    <h1>つきいち管理</h1>
+    <p class="lead">「月一など低頻度で、忘れがちな生活タスク」を、カレンダーから記録するだけで次回の期日と通知を管理するiOSアプリです。</p>
+    <dl class="detail-meta">
+      <div><dt>種別</dt><dd>iOSアプリ</dd></div>
+      <div><dt>技術</dt><dd>Flutter / Dart・SQLite (drift)</dd></div>
+      <div><dt>状態</dt><dd><span class="status">開発中</span></dd></div>
+    </dl>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>概要</h2>
+      <p>歯ブラシの交換やマットレスの向き替えのように、周期が長くて忘れがちな用事を扱うためのアプリです。記録は「やった」をワンタッチで押すだけ。次回いつやればいいかを覚えておく必要も、手帳やメモアプリに書き写す必要もありません。</p>
+      <p>次回の期日はデータベースに保存せず、「前回の実施日 + 間隔日数」として記録のたびに計算し直します。記録が一件もない項目は、登録日を起点に期日を出します。ネットワーク通信は行わず、すべてのデータは端末内のSQLiteに保存されます。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>主な機能</h2>
+      <ul class="feature-list">
+        <li><b>カレンダー主役のホーム画面</b> — 日付をタップすると選択日パネルに切り替わり、その日の記録一覧とアクティブな全項目の期日状況が表示されます。</li>
+        <li><b>ワンタッチ記録と取り消し</b> — リストの「やった」をタップするだけで記録。直後に出るバーから5秒以内なら元に戻せます。</li>
+        <li><b>過去日付での記録・履歴の修正</b> — 過去の日付をタップして後から記録したり、履歴画面から日付の修正・メモの追加・削除ができます。</li>
+        <li><b>期日当日に1回だけの通知</b> — 毎日の再通知はしません。通知時刻は設定画面で変更できます（既定09:00）。</li>
+        <li><b>アプリアイコンのバッジ</b> — 今日時点で期限切れの項目数を表示し、記録・修正・削除のたびに再計算します。</li>
+        <li><b>完全オフライン</b> — ネットワーク通信なし。データは端末内のSQLite（drift）にのみ保存されます。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="prose"><h2>画面</h2></div>
+      <ul class="shots shots-phone">
+        <li>
+          <figure>
+            <img src="../../assets/img/tsukiichi-home.png" width="585" height="1266"
+                 alt="つきいち管理のホーム画面。月カレンダーの下に、その日の記録と期日が近い項目のリストが並んでいる。">
+            <figcaption>ホーム。カレンダーのドットで期日の状況が分かる</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="../../assets/img/tsukiichi-sheet.png" width="585" height="1266"
+                 alt="「7月15日にやったことを記録」というボトムシートに、項目と間隔日数のボタンが並んでいる画面。">
+            <figcaption>記録シート。項目を選ぶだけで記録できる</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="../../assets/img/tsukiichi-history.png" width="585" height="1266"
+                 alt="歯ブラシ交換の履歴画面。過去の実施日が一覧で並び、それぞれに編集ボタンが付いている。">
+            <figcaption>項目別の履歴。日付やメモを後から直せる</figcaption>
+          </figure>
+        </li>
+      </ul>
+      <p class="note">画面は開発中のビルドを撮影したものです。実際の表示は変更される場合があります。</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap prose">
+      <h2>お問い合わせ</h2>
+      <p>このページは本アプリのサポートページを兼ねています。不具合報告・お問い合わせは <a href="https://github.com/HIDE-Fozu" rel="noopener">GitHubプロフィール</a> からお願いします。</p>
+      <a class="backlink" href="../index.html">アプリ一覧へ戻る</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="copyright">&copy; 2026 Fozu</p>
+    <ul class="footer-links">
+      <li><a href="../../index.html">ホーム</a></li>
+      <li><a href="../../works/index.html">制作実績</a></li>
+      <li><a href="../index.html">アプリ</a></li>
+      <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub (HIDE-Fozu)</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

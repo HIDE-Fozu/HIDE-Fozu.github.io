@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fozu — 個人開発者のポートフォリオ</title>
+<meta name="description" content="個人開発者Fozuのポートフォリオ。Flutter製のiOSアプリ、Unity製のスマホゲーム、素のHTML/CSSで作るWebサイトの制作実績をまとめています。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fozu">
+<meta property="og:title" content="Fozu — 個人開発者のポートフォリオ">
+<meta property="og:description" content="Flutter製のiOSアプリ、Unity製のスマホゲーム、素のHTML/CSSで作るWebサイト。個人で作っているものをまとめています。">
+<meta property="og:image" content="https://fozu.jp/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>Fozu</a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="index.html" aria-current="page">ホーム</a></li>
+        <li><a href="works/index.html">制作実績</a></li>
+        <li><a href="apps/index.html">アプリ</a></li>
+        <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Portfolio</span>
+      <h1>作りたいものを、<br>一人で最後まで作る。</h1>
+      <p class="lead">Fozu（フォズ）です。個人開発者として、iOSアプリ・Webサイト・スマートフォン向けゲームを、企画から設計・実装・検証まで一人で手がけています。ここでは自分で作ったものをまとめています。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="works/index.html">制作実績を見る</a>
+        <a class="btn btn-ghost" href="https://github.com/HIDE-Fozu" rel="noopener">GitHub (HIDE-Fozu)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="wrap">
+      <span class="eyebrow">Skills</span>
+      <h2>できること</h2>
+      <p class="section-lead">実際に自分の作品で使っている技術です。</p>
+      <ul class="skill-grid">
+        <li>
+          <h3>モバイルアプリ</h3>
+          <p>Flutter / Dart でiOS向けアプリを開発しています。状態管理にRiverpod、端末内データベースに drift（SQLite）を使い、通信を伴わないオフライン動作のアプリを作ってきました。</p>
+        </li>
+        <li>
+          <h3>Webサイト制作</h3>
+          <p>HTML / CSS / JavaScript を直接書いてサイトを組み立てます。ビルド工程やフレームワークに頼らない構成と、スマートフォンからデスクトップまでのレスポンシブ対応が中心です。</p>
+        </li>
+        <li>
+          <h3>ゲーム開発</h3>
+          <p>Unity 6 / C# でスマートフォン向けの3Dゲームを開発中です。セーブデータの扱い、NavMeshによるNPCの経路探索、トゥーン調の見た目づくりなどに取り組んでいます。</p>
+        </li>
+        <li>
+          <h3>スクリプトによる自動化</h3>
+          <p>PowerShell / Python で、繰り返しの作業や検証手順をスクリプト化します。画面のスクリーンショット取得やリンク切れ検査といった、確認作業の自動化も含みます。</p>
+        </li>
+      </ul>
+      <ul class="chips">
+        <li>Flutter</li>
+        <li>Dart</li>
+        <li>iOS</li>
+        <li>Riverpod</li>
+        <li>SQLite / drift</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Unity 6</li>
+        <li>C#</li>
+        <li>PowerShell</li>
+        <li>Python</li>
+        <li>Git / GitHub</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="highlights">
+    <div class="wrap">
+      <span class="eyebrow">Selected Works</span>
+      <h2>代表作</h2>
+      <p class="section-lead">とくに手をかけている3つです。すべての作品は<a href="works/index.html">制作実績</a>のページにまとめています。</p>
+      <ul class="card-grid">
+        <li class="card">
+          <div class="card-thumb card-thumb-text">
+            <span>KAKEIBO</span>
+          </div>
+          <div class="card-body">
+            <p class="card-kicker">iOSアプリ / Flutter</p>
+            <h3><a href="apps/kakeibo/index.html">家計簿</a></h3>
+            <p>カレンダーを起点に、その日の支出と収入をすばやく入力・確認できる家計簿アプリ。データは端末内だけで完結します。</p>
+            <div class="card-foot">
+              <span class="status status-live">App Store公開中</span>
+              <a class="card-more" href="apps/kakeibo/index.html">詳細</a>
+            </div>
+          </div>
+        </li>
+        <li class="card">
+          <div class="card-thumb card-thumb-phone">
+            <img src="assets/img/tsukiichi-home.png" width="585" height="1266"
+                 alt="つきいち管理のホーム画面。月カレンダーと、期日が近い項目のリストが表示されている。">
+          </div>
+          <div class="card-body">
+            <p class="card-kicker">iOSアプリ / Flutter</p>
+            <h3><a href="apps/tsukiichi/index.html">つきいち管理</a></h3>
+            <p>歯ブラシ交換やマットレスの向き替えなど、低頻度で忘れがちな生活タスクを、記録するだけで次の期日まで管理するアプリ。</p>
+            <div class="card-foot">
+              <span class="status">開発中</span>
+              <a class="card-more" href="apps/tsukiichi/index.html">詳細</a>
+            </div>
+          </div>
+        </li>
+        <li class="card">
+          <div class="card-thumb">
+            <img src="assets/img/hidamari-hud.jpg" width="1280" height="720"
+                 alt="ひだまりタウンのプレイ画面。デフォルメされた3Dの町並みと、所持金や日付を表示するHUD。">
+          </div>
+          <div class="card-body">
+            <p class="card-kicker">スマホゲーム / Unity</p>
+            <h3><a href="apps/hidamari/index.html">ひだまりタウン</a></h3>
+            <p>採集・クラフト・建築で町を広げ、入居希望者を選んで住まわせる「大家」視点のスローライフゲーム。</p>
+            <div class="card-foot">
+              <span class="status">開発中</span>
+              <a class="card-more" href="apps/hidamari/index.html">詳細</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap prose">
+      <span class="eyebrow">About</span>
+      <h2>このサイトについて</h2>
+      <p>fozu.jp は、個人で作ったものを置いておくための場所です。ビルド工程を挟まない素のHTML / CSS / JavaScript で作り、GitHub Pages で公開しています。</p>
+      <p>公開中のアプリの各詳細ページは、そのアプリのサポートページを兼ねています。不具合報告やお問い合わせは <a href="https://github.com/HIDE-Fozu" rel="noopener">GitHubプロフィール</a> からお願いします。</p>
+      <div class="hero-actions">
+        <a class="btn btn-ghost" href="apps/index.html">アプリ一覧へ</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="copyright">&copy; 2026 Fozu</p>
+    <ul class="footer-links">
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="works/index.html">制作実績</a></li>
+      <li><a href="apps/index.html">アプリ</a></li>
+      <li><a href="https://github.com/HIDE-Fozu" rel="noopener">GitHub (HIDE-Fozu)</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
