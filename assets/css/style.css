@@ -300,6 +300,65 @@ ul { margin: 0; padding: 0; }
   letter-spacing: .02em;
 }
 
+/* --- 8b. 学習カード(ブログ風) ------------------------------ */
+.learn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 22px;
+  margin-top: 28px;
+  list-style: none;
+  padding: 0;
+}
+.learn-grid a { display: block; color: inherit; text-decoration: none; }
+.learn-grid a:hover .learn-title { color: var(--accent); }
+.learn-thumb {
+  aspect-ratio: 16 / 9;
+  background: var(--accent-tint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.learn-thumb span {
+  font-family: var(--font-en);
+  font-weight: 700;
+  letter-spacing: .14em;
+  font-size: .95rem;
+  color: var(--accent-deep);
+}
+.learn-date {
+  margin: 10px 0 2px;
+  font-family: var(--font-en);
+  font-size: .8rem;
+  color: var(--ink-3);
+}
+.learn-title { margin: 0; font-size: .95rem; font-weight: 700; line-height: 1.6; transition: color .15s; }
+.learn-desc { margin: 4px 0 0; font-size: .85rem; color: var(--ink-2); line-height: 1.7; }
+
+/* --- 8c. 技術と使用歴 -------------------------------------- */
+.tech-list {
+  margin-top: 26px;
+  max-width: 560px;
+  list-style: none;
+  padding: 0;
+}
+.tech-list > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 2px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: .95rem;
+}
+.tech-list .since {
+  color: var(--ink-3);
+  font-family: var(--font-en);
+  font-size: .85rem;
+  white-space: nowrap;
+}
+
 /* --- 9. カードグリッド ------------------------------------- */
 .card-grid {
   display: grid;
