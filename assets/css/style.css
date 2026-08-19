@@ -178,7 +178,7 @@ ul { margin: 0; padding: 0; }
 }
 .hero .lead {
   margin-top: 22px;
-  max-width: 40em;
+  max-width: 52em;
   color: var(--ink-2);
   font-size: clamp(.97rem, 2.4vw, 1.05rem);
 }
