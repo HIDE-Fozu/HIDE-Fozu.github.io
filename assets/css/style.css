@@ -168,7 +168,7 @@ ul { margin: 0; padding: 0; }
 }
 
 .hero {
-  padding: clamp(36px, 5.5vw, 60px) 0 clamp(30px, 4.5vw, 48px);
+  padding: clamp(26px, 4vw, 44px) 0 clamp(22px, 3.5vw, 36px);
   border-bottom: 1px solid var(--line-soft);
 }
 .hero h1 {
@@ -232,7 +232,7 @@ ul { margin: 0; padding: 0; }
 .btn-ghost:hover { background: var(--accent-tint); color: var(--accent-deep); }
 
 /* --- 7. セクション ----------------------------------------- */
-.section { padding: clamp(30px, 4.5vw, 48px) 0; }
+.section { padding: clamp(22px, 3.5vw, 36px) 0; }
 .section + .section { border-top: 1px solid var(--line-soft); }
 .section-soft { background: var(--bg-soft); }
 
@@ -300,53 +300,63 @@ ul { margin: 0; padding: 0; }
   letter-spacing: .02em;
 }
 
-/* --- 8b. 学習カード(ブログ風) ------------------------------ */
-.learn-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 22px;
-  margin-top: 28px;
-  list-style: none;
-  padding: 0;
+/* --- 8b. 学習帯(横スクロールの帯・数十件想定) ---------------- */
+.learn-band {
+  padding: 16px 0 18px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line-soft);
 }
-.learn-grid a { display: block; color: inherit; text-decoration: none; }
-.learn-grid a:hover .learn-title { color: var(--accent); }
-.learn-thumb {
-  aspect-ratio: 16 / 9;
-  background: var(--accent-tint);
+.learn-band-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.learn-band-head h2 { margin: 0; font-size: .95rem; }
+.learn-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  list-style: none;
+  margin: 0;
+  padding: 2px 2px 8px;
+}
+.learn-strip > li {
+  flex: 0 0 auto;
+  width: 225px;
+  background: var(--bg);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.learn-thumb span {
-  font-family: var(--font-en);
-  font-weight: 700;
-  letter-spacing: .14em;
-  font-size: .95rem;
-  color: var(--accent-deep);
-}
-.learn-date {
-  margin: 10px 0 2px;
-  font-family: var(--font-en);
-  font-size: .8rem;
-  color: var(--ink-3);
+  padding: 9px 13px;
 }
 .learn-cat {
   display: inline-block;
-  margin-right: 8px;
-  padding: 1px 10px;
+  margin-right: 7px;
+  padding: 0 9px;
   border: 1px solid var(--accent);
   border-radius: 999px;
   font-family: var(--font-ja);
-  font-size: .72rem;
+  font-size: .7rem;
   color: var(--accent-deep);
   background: var(--accent-tint);
-  vertical-align: 1px;
 }
-.learn-title { margin: 0; font-size: .95rem; font-weight: 700; line-height: 1.6; transition: color .15s; }
-.learn-desc { margin: 4px 0 0; font-size: .85rem; color: var(--ink-2); line-height: 1.7; }
+.learn-date {
+  font-family: var(--font-en);
+  font-size: .75rem;
+  color: var(--ink-3);
+}
+.learn-item-title {
+  display: block;
+  margin-top: 5px;
+  font-size: .85rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: inherit;
+  text-decoration: none;
+}
+a.learn-item-title:hover { color: var(--accent); }
 
 /* --- 8c. 技術と使用歴 -------------------------------------- */
 .tech-list {
