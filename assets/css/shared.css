@@ -118,46 +118,8 @@
 }
 
 /* --- 2b. 学習の帯（トップページ用） -------------------------
-   1ジャンル=1カード。縦幅は1カード分に固定し、横スクロールで全ジャンルを見せる。
-   カードの器（.learn-strip / .learn-cat）は style.css の定義を流用 */
-.lrn-mini {
-  margin: 7px 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 4px;
-}
-
-.lrn-mini > li {
-  font-size: .78rem;
-  line-height: 1.55;
-  color: var(--ink-2);
-}
-
-.lrn-mini a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(123, 133, 138, .45);
-}
-
-.lrn-mini a:hover {
-  color: var(--accent-deep);
-  border-bottom-color: var(--accent);
-}
-
-.lrn-done {
-  display: inline-block;
-  margin-left: 5px;
-  padding: 0 7px;
-  border: 1px solid var(--accent);
-  border-radius: 999px;
-  background: var(--accent-tint);
-  font-size: .65rem;
-  color: var(--accent-deep);
-  white-space: nowrap;
-  vertical-align: 1px;
-}
-
+   1冊=1カードの横スクロール。カードの体裁は style.css の学習帯
+   （.learn-strip / .learn-cat / .learn-date / .learn-item-title）をそのまま使う */
 .learn-band-more {
   margin-left: auto;
   font-size: .78rem;

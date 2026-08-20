@@ -90,20 +90,21 @@ window.LEARNING = [
     return html;
   }
 
-  /* トップ用: 1ジャンル=1カードの帯。縦幅を抑えるため「読了」だけバッジを付ける */
+  /* トップ用: 1冊=1カードの帯（style.css の学習帯は数十件の横スクロール想定）。
+     カードの体裁は従来と同じで、チップにジャンル名を入れる */
   function bandHtml() {
     var html = "";
     for (var i = 0; i < window.LEARNING.length; i++) {
       var g = window.LEARNING[i];
-      html += '<li><span class="learn-cat">' + esc(g.genre) + "</span>";
-      html += '<ul class="lrn-mini">';
       for (var j = 0; j < g.items.length; j++) {
         var b = g.items[j];
-        html += "<li>" + linked(b)
-          + (b.state === "読了" ? '<span class="lrn-done">読了</span>' : "")
-          + "</li>";
+        html += '<li><span class="learn-cat">' + esc(g.genre) + "</span>"
+          + '<span class="learn-date">' + esc(b.state) + "</span>";
+        html += b.url
+          ? '<a class="learn-item-title" href="' + esc(b.url) + '" rel="noopener">' + label(b) + "</a>"
+          : '<span class="learn-item-title">' + label(b) + "</span>";
+        html += "</li>";
       }
-      html += "</ul></li>";
     }
     return html;
   }
