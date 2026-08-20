@@ -86,10 +86,10 @@ window.LEARNING = [
       : '<span class="cov">' + inner + "</span>";
   }
 
-  /* 職務経歴書用: 書影グリッド（フラット。ジャンルは各冊のタグで示す）。
-     ジャンルに comment があれば棚の下に注記として出す */
+  /* 職務経歴書用: 1冊=1行のフラットなリスト。行頭にジャンルタグ。
+     ジャンルでの区分け（見出し・列分け）はしない。comment はリストの下の注記 */
   function listHtml() {
-    var html = '<ul class="shelf">';
+    var html = '<ul class="booklist">';
     var notes = "";
     for (var i = 0; i < window.LEARNING.length; i++) {
       var g = window.LEARNING[i];
@@ -98,11 +98,12 @@ window.LEARNING = [
       }
       for (var j = 0; j < g.items.length; j++) {
         var b = g.items[j];
-        html += "<li>" + cover(b)
-          + '<span class="shelf-cap">' + esc(b.title) + "</span>"
-          + '<span class="shelf-meta">' + esc(g.genre)
-          + (b.state === "読了" ? '<b class="shelf-done">読了</b>' : "")
-          + "</span></li>";
+        html += '<li><span class="book-tag">' + esc(g.genre) + "</span>";
+        html += b.url
+          ? '<a class="book-title" href="' + esc(b.url) + '" rel="noopener">' + label(b) + "</a>"
+          : '<span class="book-title">' + label(b) + "</span>";
+        html += '<span class="book-state' + (b.state === "読了" ? " done" : "") + '">'
+          + esc(b.state) + "</span></li>";
       }
     }
     return html + "</ul>" + notes;

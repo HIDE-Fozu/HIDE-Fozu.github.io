@@ -168,3 +168,59 @@ a.cov:hover {
   color: var(--ink-3);
   line-height: 1.7;
 }
+
+/* --- 2c. 1冊=1行のリスト（職務経歴書用） --------------------
+   行頭にジャンルタグ。ジャンルでの区分けはしない */
+.booklist {
+  margin-top: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.booklist > li {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.book-tag {
+  flex: none;
+  padding: 0 9px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent-tint);
+  font-size: .7rem;
+  color: var(--accent-deep);
+  white-space: nowrap;
+}
+
+.book-title {
+  font-size: .9rem;
+  color: var(--ink-2);
+  min-width: 0;
+}
+
+a.book-title {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(123, 133, 138, .45);
+}
+
+a.book-title:hover {
+  color: var(--accent-deep);
+  border-bottom-color: var(--accent);
+}
+
+.book-state {
+  margin-left: auto;
+  font-size: .72rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.book-state.done {
+  color: var(--accent-deep);
+  font-weight: 600;
+}
