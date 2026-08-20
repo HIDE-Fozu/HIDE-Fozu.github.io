@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+/* 職務経歴書ページの追加スタイル。style.css の後に読み込む。
+   style.css は変更しない。ここに書くのは次の4系統だけ。
+   1. ページ内目次  2. 本文と職務経歴ブロック  3. 表  4. 印刷用 */
+
+/* --- 1. ページ内目次 --------------------------------------- */
+.resume-toc {
+  margin-top: 20px;
+}
+.resume-toc > li {
+  padding: 0;
+}
+.resume-toc a {
+  display: inline-block;
+  padding: 5px 13px;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.resume-toc a:hover {
+  color: var(--accent-deep);
+}
+
+/* --- 2. 本文と小見出し ------------------------------------- */
+.resume-p {
+  margin-top: 14px;
+  max-width: 46em;
+  color: var(--ink-2);
+  font-size: .95rem;
+}
+.resume-sub {
+  margin-top: 26px;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+/* --- 3. 職務経歴ブロック ----------------------------------- */
+.job {
+  margin-top: 26px;
+}
+.job + .job {
+  padding-top: 26px;
+  border-top: 1px solid var(--line-soft);
+}
+.job-head h3 {
+  font-size: 1.05rem;
+}
+.job-meta {
+  margin-top: 5px;
+  color: var(--ink-3);
+  font-size: .85rem;
+  letter-spacing: .02em;
+}
+.job-body {
+  margin-top: 14px;
+}
+.job-body ul {
+  margin-top: 6px;
+  padding-left: 18px;
+  list-style: disc;
+}
+.job-body ul > li {
+  font-size: .9rem;
+  color: var(--ink-2);
+}
+
+/* --- 4. 表 -------------------------------------------------- */
+.tablewrap {
+  margin-top: 18px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.rtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+}
+.rtable-3 { min-width: 440px; }
+.rtable-4 { min-width: 720px; }
+.rtable th,
+.rtable td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line-soft);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.75;
+}
+.rtable thead th {
+  background: var(--bg-soft);
+  color: var(--ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.rtable tbody th {
+  width: 8em;
+  color: var(--ink-3);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.rtable td:first-child {
+  color: var(--ink-2);
+}
+/* 4列表（それ以前の職歴）の期間列は折り返さない。狭い画面では横スクロールで読む */
+.rtable-4 td:first-child {
+  white-space: nowrap;
+}
+
+/* --- 5. 印刷用 ---------------------------------------------- */
+@media print {
+  .skip-link,
+  .site-header,
+  .site-footer,
+  .resume-toc {
+    display: none !important;
+  }
+  a::after { content: none !important; }
+  body {
+    font-size: 11.5pt;
+    background: #fff;
+  }
+  .page-head {
+    padding: 0 0 12px;
+  }
+  .section {
+    padding: 10px 0;
+    border-top: none;
+  }
+  .job {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .tablewrap {
+    overflow-x: visible;
+  }
+  .rtable-3,
+  .rtable-4 {
+    min-width: 0;
+  }
+}
