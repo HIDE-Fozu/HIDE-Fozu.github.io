@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/* 技術ロゴ。resume/index.html と index.html の両方で style.css の後に読み込む。
+   ロゴのSVGはHTMLに直接書き込んである（外部CDNは使わない）。
+   出典: Simple Icons / Material Design Icons (Apache-2.0) / Arcticons (CC BY-SA 4.0) */
+
+.tech-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tech-logo {
+  display: block;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: .18em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.tech-logo svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ロゴが用意できない行。技術名の左端を他の行と揃えるための余白 */
+.tech-logo-blank {
+  background: none;
+}
+
+/* 出典表示 */
+.attrib {
+  margin-top: 6px;
+  color: var(--ink-3);
+  font-size: .72rem;
+  line-height: 1.7;
+}
