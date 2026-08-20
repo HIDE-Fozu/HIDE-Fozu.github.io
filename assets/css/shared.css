@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+/* トップページと職務経歴書で共有する部品。
+   style.css の後に読み込む。style.css は変更しない。
+   1. 技術ロゴ  2. 学習リスト  3. 出典表示 */
+
+/* --- 1. 技術ロゴ -------------------------------------------
+   ロゴのSVGはHTMLに直接書き込んである（外部CDNは使わない）。
+   出典: Simple Icons / Material Design Icons (Apache-2.0) / Arcticons (CC BY-SA 4.0) */
+.tech-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tech-logo {
+  display: block;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: .18em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.tech-logo svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ロゴが用意できない行。技術名の左端を他の行と揃えるための余白 */
+.tech-logo-blank {
+  background: none;
+}
+
+/* --- 2. 学習リスト -----------------------------------------
+   中身は assets/js/learning.js から描画する。本の追加はそのファイルだけ */
+.lrn {
+  margin-top: 16px;
+}
+
+.lrn-row {
+  display: grid;
+  grid-template-columns: 9em 1fr;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-soft);
+  align-items: baseline;
+}
+
+.lrn-genre {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+  letter-spacing: .02em;
+}
+
+.lrn-books {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 5px;
+}
+
+.lrn-books > li {
+  font-size: .9rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.lrn-books a {
+  color: var(--ink-2);
+  text-decoration: none;
+  /* クリックできると分かる程度の下線。--ink-3 を薄めた色 */
+  border-bottom: 1px solid rgba(123, 133, 138, .45);
+}
+
+.lrn-books a:hover {
+  color: var(--accent-deep);
+  border-bottom-color: var(--accent);
+}
+
+.lrn-state {
+  display: inline-block;
+  margin-left: 7px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: .68rem;
+  color: var(--ink-3);
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.lrn-state.done {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  color: var(--accent-deep);
+}
+
+.lrn-comment {
+  margin-top: 7px;
+  font-size: .8rem;
+  color: var(--ink-3);
+  line-height: 1.7;
+}
+
+/* 画面が狭いときはジャンルを上に積む */
+@media (max-width: 430px) {
+  .lrn-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+}
+
+/* --- 3. 出典表示 -------------------------------------------- */
+.attrib {
+  margin-top: 6px;
+  color: var(--ink-3);
+  font-size: .72rem;
+  line-height: 1.7;
+}
