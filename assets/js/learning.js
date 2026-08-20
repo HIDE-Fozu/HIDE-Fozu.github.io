@@ -69,41 +69,52 @@ window.LEARNING = [
       : label(b);
   }
 
-  /* 職務経歴書用: ジャンル×書名の縦リスト。学習中・読了の両方をバッジ表示 */
-  function listHtml() {
-    var html = "";
-    for (var i = 0; i < window.LEARNING.length; i++) {
-      var g = window.LEARNING[i];
-      html += '<div class="lrn-row"><span class="lrn-genre">' + esc(g.genre) + "</span>";
-      html += '<div class="lrn-right"><ul class="lrn-books">';
-      for (var j = 0; j < g.items.length; j++) {
-        var b = g.items[j];
-        var cls = b.state === "読了" ? "lrn-state done" : "lrn-state";
-        html += "<li>" + linked(b) + '<span class="' + cls + '">' + esc(b.state) + "</span></li>";
-      }
-      html += "</ul>";
-      if (g.comment) {
-        html += '<p class="lrn-comment">' + esc(g.comment) + "</p>";
-      }
-      html += "</div></div>";
-    }
-    return html;
+  /* 書影のURL。Amazonの商品IDから作る（本の追加時に画像URLを書く必要はない） */
+  function coverSrc(b) {
+    var m = (b.url || "").match(/\/dp\/([A-Z0-9]{10})/i);
+    return m ? "https://images-na.ssl-images-amazon.com/images/P/" + m[1] + ".09.LZZZZZZZ.jpg" : null;
   }
 
-  /* トップ用: 1冊=1カードの帯（style.css の学習帯は数十件の横スクロール想定）。
-     カードの体裁は従来と同じで、チップにジャンル名を入れる */
+  /* 書影1枚ぶん。画像が無い教材（Web教材など）は題名入りの無地カバーにする */
+  function cover(b) {
+    var src = coverSrc(b);
+    var inner = src
+      ? '<img loading="lazy" src="' + src + '" alt="' + esc(b.title) + '">'
+      : '<span class="cov-txt">' + label(b) + "</span>";
+    return b.url
+      ? '<a class="cov" href="' + esc(b.url) + '" rel="noopener" title="' + esc(b.title) + '">' + inner + "</a>"
+      : '<span class="cov">' + inner + "</span>";
+  }
+
+  /* 職務経歴書用: 書影グリッド（フラット。ジャンルは各冊のタグで示す）。
+     ジャンルに comment があれば棚の下に注記として出す */
+  function listHtml() {
+    var html = '<ul class="shelf">';
+    var notes = "";
+    for (var i = 0; i < window.LEARNING.length; i++) {
+      var g = window.LEARNING[i];
+      if (g.comment) {
+        notes += '<p class="shelf-note">' + esc(g.genre) + ": " + esc(g.comment) + "</p>";
+      }
+      for (var j = 0; j < g.items.length; j++) {
+        var b = g.items[j];
+        html += "<li>" + cover(b)
+          + '<span class="shelf-cap">' + esc(b.title) + "</span>"
+          + '<span class="shelf-meta">' + esc(g.genre)
+          + (b.state === "読了" ? '<b class="shelf-done">読了</b>' : "")
+          + "</span></li>";
+      }
+    }
+    return html + "</ul>" + notes;
+  }
+
+  /* トップ用: 書影の横一列（題名はカバー画像とtitle属性で伝える） */
   function bandHtml() {
     var html = "";
     for (var i = 0; i < window.LEARNING.length; i++) {
       var g = window.LEARNING[i];
       for (var j = 0; j < g.items.length; j++) {
-        var b = g.items[j];
-        html += '<li><span class="learn-cat">' + esc(g.genre) + "</span>"
-          + '<span class="learn-date">' + esc(b.state) + "</span>";
-        html += b.url
-          ? '<a class="learn-item-title" href="' + esc(b.url) + '" rel="noopener">' + label(b) + "</a>"
-          : '<span class="learn-item-title">' + label(b) + "</span>";
-        html += "</li>";
+        html += "<li>" + cover(g.items[j]) + "</li>";
       }
     }
     return html;

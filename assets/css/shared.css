@@ -36,90 +36,118 @@
   background: none;
 }
 
-/* --- 2. 学習リスト -----------------------------------------
-   中身は assets/js/learning.js から描画する。本の追加はそのファイルだけ */
-.lrn {
-  margin-top: 16px;
+/* --- 2. 学習（書影の棚） ------------------------------------
+   中身は assets/js/learning.js から描画する。本の追加はそのファイルだけ。
+   書影を並べる一般的な本棚の型（ブクログ・読書メーター等と同じ見せ方） */
+.cov {
+  display: block;
+  width: 92px;
+  height: 132px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  box-shadow: 0 1px 4px rgba(22, 25, 27, .14);
 }
 
-.lrn-row {
-  display: grid;
-  grid-template-columns: 9em 1fr;
-  gap: 14px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--line-soft);
-  align-items: baseline;
+.cov img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.lrn-genre {
-  font-size: .78rem;
-  font-weight: 600;
-  color: var(--accent-deep);
-  letter-spacing: .02em;
+a.cov {
+  transition: transform .15s ease, box-shadow .15s ease;
 }
 
-.lrn-books {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 5px;
+a.cov:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(22, 25, 27, .2);
 }
 
-.lrn-books > li {
-  font-size: .9rem;
-  color: var(--ink-2);
-  line-height: 1.6;
-}
-
-.lrn-books a {
-  color: var(--ink-2);
-  text-decoration: none;
-  /* クリックできると分かる程度の下線。--ink-3 を薄めた色 */
-  border-bottom: 1px solid rgba(123, 133, 138, .45);
-}
-
-.lrn-books a:hover {
-  color: var(--accent-deep);
-  border-bottom-color: var(--accent);
-}
-
-.lrn-state {
-  display: inline-block;
-  margin-left: 7px;
-  padding: 0 8px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: .68rem;
-  color: var(--ink-3);
-  vertical-align: 1px;
-  white-space: nowrap;
-}
-
-.lrn-state.done {
-  border-color: var(--accent);
+/* 画像のない教材（Web教材など）は題名入りの無地カバー */
+.cov-txt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
   background: var(--accent-tint);
   color: var(--accent-deep);
+  font-size: .72rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
 }
 
-.lrn-comment {
-  margin-top: 7px;
-  font-size: .8rem;
+/* 職務経歴書: 折り返しグリッド */
+.shelf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 14px;
+  margin-top: 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.shelf > li {
+  width: 92px;
+}
+
+.shelf-cap {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 6px;
+  font-size: .68rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.shelf-meta {
+  display: block;
+  margin-top: 2px;
+  font-size: .65rem;
   color: var(--ink-3);
-  line-height: 1.7;
 }
 
-/* 画面が狭いときはジャンルを上に積む */
-@media (max-width: 430px) {
-  .lrn-row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 6px;
-  }
+.shelf-done {
+  margin-left: 5px;
+  font-weight: 600;
+  color: var(--accent-deep);
 }
 
-/* --- 2b. 学習の帯（トップページ用） -------------------------
-   1冊=1カードの横スクロール。カードの体裁は style.css の学習帯
-   （.learn-strip / .learn-cat / .learn-date / .learn-item-title）をそのまま使う */
+/* トップ: 書影の横一列（style.css の .learn-strip の横スクロールを流用しつつ
+   カードの器を消して書影だけにする） */
+.shelf-band > li {
+  width: auto;
+  flex: none;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.shelf-band .cov {
+  width: 76px;
+  height: 109px;
+}
+
+.shelf-band .cov-txt {
+  font-size: .62rem;
+}
+
+/* 帯の上下余白を詰める */
+.learn-band {
+  padding: 10px 0 12px;
+}
+
+.learn-band-head {
+  margin-bottom: 8px;
+}
+
 .learn-band-more {
   margin-left: auto;
   font-size: .78rem;
@@ -130,5 +158,13 @@
   margin-top: 6px;
   color: var(--ink-3);
   font-size: .72rem;
+  line-height: 1.7;
+}
+
+/* 棚の下の注記（ジャンルのコメント） */
+.shelf-note {
+  margin-top: 10px;
+  font-size: .78rem;
+  color: var(--ink-3);
   line-height: 1.7;
 }
