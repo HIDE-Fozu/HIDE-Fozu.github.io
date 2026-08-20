@@ -3,8 +3,12 @@
      トップページと職務経歴書の両方に反映される（他のファイルを直す必要はない）。
    state は "学習中" か "読了" のどちらか。
    note は書名の後ろに（）で添える補足。不要なら省略してよい。
-   ジャンルの comment は、その領域についての一言。書くと書名リストの下に小さく出る。
-   不要なジャンルは comment を省略してよい。 */
+   ジャンルの comment は、その領域についての一言。職務経歴書の書名リストの下に小さく出る。
+   不要なジャンルは comment を省略してよい。
+
+   表示は2種類あり、置き場所のHTML属性で切り替わる:
+     <div data-learning></div>        … 縦リスト（職務経歴書用。コメント・学習中バッジも出す）
+     <ul data-learning="band"></ul>   … 帯（トップ用。1ジャンル=1カードの横スクロール。読了だけバッジ） */
 
 window.LEARNING = [
   { genre: "バックエンド基盤", items: [
@@ -55,28 +59,82 @@ window.LEARNING = [
       .replace(/"/g, "&quot;");
   }
 
-  var html = "";
-  for (var i = 0; i < window.LEARNING.length; i++) {
-    var g = window.LEARNING[i];
-    html += '<div class="lrn-row"><span class="lrn-genre">' + esc(g.genre) + "</span>";
-    html += '<div class="lrn-right"><ul class="lrn-books">';
-    for (var j = 0; j < g.items.length; j++) {
-      var b = g.items[j];
-      var label = esc(b.title) + (b.note ? "（" + esc(b.note) + "）" : "");
-      var body = b.url
-        ? '<a href="' + esc(b.url) + '" rel="noopener">' + label + "</a>"
-        : label;
-      var cls = b.state === "読了" ? "lrn-state done" : "lrn-state";
-      html += "<li>" + body + '<span class="' + cls + '">' + esc(b.state) + "</span></li>";
+  function label(b) {
+    return esc(b.title) + (b.note ? "（" + esc(b.note) + "）" : "");
+  }
+
+  function linked(b) {
+    return b.url
+      ? '<a href="' + esc(b.url) + '" rel="noopener">' + label(b) + "</a>"
+      : label(b);
+  }
+
+  /* 職務経歴書用: ジャンル×書名の縦リスト。学習中・読了の両方をバッジ表示 */
+  function listHtml() {
+    var html = "";
+    for (var i = 0; i < window.LEARNING.length; i++) {
+      var g = window.LEARNING[i];
+      html += '<div class="lrn-row"><span class="lrn-genre">' + esc(g.genre) + "</span>";
+      html += '<div class="lrn-right"><ul class="lrn-books">';
+      for (var j = 0; j < g.items.length; j++) {
+        var b = g.items[j];
+        var cls = b.state === "読了" ? "lrn-state done" : "lrn-state";
+        html += "<li>" + linked(b) + '<span class="' + cls + '">' + esc(b.state) + "</span></li>";
+      }
+      html += "</ul>";
+      if (g.comment) {
+        html += '<p class="lrn-comment">' + esc(g.comment) + "</p>";
+      }
+      html += "</div></div>";
     }
-    html += "</ul>";
-    if (g.comment) {
-      html += '<p class="lrn-comment">' + esc(g.comment) + "</p>";
+    return html;
+  }
+
+  /* トップ用: 1ジャンル=1カードの帯。縦幅を抑えるため「読了」だけバッジを付ける */
+  function bandHtml() {
+    var html = "";
+    for (var i = 0; i < window.LEARNING.length; i++) {
+      var g = window.LEARNING[i];
+      html += '<li><span class="learn-cat">' + esc(g.genre) + "</span>";
+      html += '<ul class="lrn-mini">';
+      for (var j = 0; j < g.items.length; j++) {
+        var b = g.items[j];
+        html += "<li>" + linked(b)
+          + (b.state === "読了" ? '<span class="lrn-done">読了</span>' : "")
+          + "</li>";
+      }
+      html += "</ul></li>";
     }
-    html += "</div></div>";
+    return html;
   }
 
   for (var k = 0; k < mounts.length; k++) {
-    mounts[k].innerHTML = html;
+    var mode = mounts[k].getAttribute("data-learning");
+    mounts[k].innerHTML = mode === "band" ? bandHtml() : listHtml();
+  }
+})();
+
+/* 「技術と使用歴」の年数を自動計算する（トップページ）。
+   <span class="since" data-since="2024">2024〜</span> と書くと「2年（2024〜）」に置き換わる。
+   毎年の手直しは不要（表示のたびに今年から計算する）。
+   data-until="2025" で終了年を指定。data-dur="6ヶ月" で年数だけ手動指定（1年未満の場合など）。 */
+(function () {
+  var spans = document.querySelectorAll(".since[data-since]");
+  if (!spans.length) { return; }
+  var now = new Date().getFullYear();
+  for (var i = 0; i < spans.length; i++) {
+    var s = spans[i];
+    var since = parseInt(s.getAttribute("data-since"), 10);
+    var untilAttr = s.getAttribute("data-until");
+    var until = untilAttr ? parseInt(untilAttr, 10) : null;
+    var range = until
+      ? (until === since ? String(since) : since + "〜" + until)
+      : since + "〜";
+    var dur = s.getAttribute("data-dur");
+    if (!dur) {
+      var years = (until || now) - since;
+      dur = years < 1 ? "1年未満" : years + "年";
+    }
+    s.textContent = dur + "（" + range + "）";
   }
 })();
