@@ -290,6 +290,7 @@ a.book-title:hover {
   display: block;
   margin-top: 3px;
   color: #d9dee1;
+  white-space: pre-line; /* コメント内の改行を活かす */
 }
 
 /* 辞書・索引の青緑バッジ */
