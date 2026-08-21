@@ -44,17 +44,14 @@
   width: 92px;
   height: 132px;
   border-radius: 3px;
-  overflow: hidden;
+  overflow: visible; /* ゲージが本の上にはみ出せるように */
   background: var(--bg-soft);
   border: 1px solid var(--line-soft);
   box-shadow: 0 1px 4px rgba(22, 25, 27, .14);
 }
 
-.cov img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+
+  border-radius: 3px;
 }
 
 a.cov {
@@ -67,7 +64,8 @@ a.cov:hover {
 }
 
 /* 画像のない教材（Web教材など）は題名入りの無地カバー */
-.cov-txt {
+
+  border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -234,7 +232,7 @@ a.book-title:hover {
 .cov-badge {
   position: absolute;
   top: 4px;
-  right: 4px;
+  left: 4px;
   padding: 1px 7px;
   border-radius: 3px;
   background: #1a7f37;
@@ -247,10 +245,12 @@ a.book-title:hover {
 /* 読書中の進行ゲージ（書影の上端・幅いっぱい） */
 .cov-gauge {
   position: absolute;
-  top: 0;
+  top: -5px;
   left: 0;
   right: 0;
-  height: 5px;
+  height: 10px;
+  border-radius: 2px;
+  overflow: hidden;
   background: rgba(22, 25, 27, .35);
 }
 
@@ -295,4 +295,21 @@ a.book-title:hover {
 /* 辞書・索引の青緑バッジ */
 .cov-badge-ref {
   background: var(--accent-deep);
+}
+
+/* --- 2e. 帯のジャンルグループ（タグ＋書影の束） ------------- */
+.shelf-band {
+  padding-top: 10px; /* はみ出したゲージが切れないための余白 */
+}
+
+.shelf-band > li.band-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.band-covers {
+  display: flex;
+  gap: 10px;
 }

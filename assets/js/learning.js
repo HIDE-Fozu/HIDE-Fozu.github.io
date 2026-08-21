@@ -93,7 +93,7 @@ window.LEARNING = [
   }
 
   /* 書影1枚ぶん。読了=緑バッジ / 辞書・索引=青緑バッジ / ページ入力あり=上端ゲージ */
-  function cover(b) {
+  function cover(b, genre) {
     var src = coverSrc(b);
     var inner = src
       ? '<img loading="lazy" src="' + src + '" alt="' + esc(b.title) + '">'
@@ -107,7 +107,7 @@ window.LEARNING = [
       inner += '<span class="cov-gauge"><span class="cov-gauge-fill" style="width:' + p + '%"></span></span>';
     }
     var tipAttrs = ' data-tip-title="' + esc(b.title) + '"'
-      + ' data-tip-state="' + stateText(b) + '"'
+      + ' data-tip-state="' + (genre ? esc(genre) + ' ・ ' : '') + stateText(b) + '"'
       + (b.comment ? ' data-tip-comment="' + esc(b.comment) + '"' : "");
     return b.url
       ? '<a class="cov" href="' + esc(b.url) + '" rel="noopener"' + tipAttrs + ">" + inner + "</a>"
@@ -142,14 +142,17 @@ window.LEARNING = [
     return html + "</ul>" + notes;
   }
 
-  /* トップ用: 書影の横一列 */
+  /* トップ用: ジャンルのタグごとに書影をまとめた横一列 */
   function bandHtml() {
     var html = "";
     for (var i = 0; i < window.LEARNING.length; i++) {
       var g = window.LEARNING[i];
+      html += '<li class="band-group"><span class="book-tag">' + esc(g.genre) + "</span>";
+      html += '<span class="band-covers">';
       for (var j = 0; j < g.items.length; j++) {
-        html += "<li>" + cover(g.items[j]) + "</li>";
+        html += cover(g.items[j], g.genre);
       }
+      html += "</span></li>";
     }
     return html;
   }
