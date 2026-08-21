@@ -224,3 +224,70 @@ a.book-title:hover {
   color: var(--accent-deep);
   font-weight: 600;
 }
+
+/* --- 2d. 書影の進行度と吹き出し ----------------------------- */
+.cov {
+  position: relative;
+}
+
+/* 読了の緑バッジ（書影の右上） */
+.cov-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 1px 7px;
+  border-radius: 3px;
+  background: #1a7f37;
+  color: #fff;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+/* 読書中の進行ゲージ（書影の上端・幅いっぱい） */
+.cov-gauge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: rgba(22, 25, 27, .35);
+}
+
+.cov-gauge-fill {
+  display: block;
+  height: 100%;
+  background: #1a7f37;
+}
+
+/* マウスを乗せたときの吹き出し（帯の横スクロールで切れないようbody直下に固定表示） */
+.cov-tip {
+  position: fixed;
+  z-index: 60;
+  max-width: 260px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  background: rgba(22, 25, 27, .94);
+  color: #fff;
+  font-size: .76rem;
+  line-height: 1.65;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+  pointer-events: none;
+}
+
+.cov-tip b {
+  display: block;
+  font-size: .78rem;
+}
+
+.cov-tip-state {
+  display: block;
+  color: #9fd8a9;
+  font-size: .7rem;
+}
+
+.cov-tip-comment {
+  display: block;
+  margin-top: 3px;
+  color: #d9dee1;
+}
