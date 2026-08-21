@@ -291,3 +291,8 @@ a.book-title:hover {
   margin-top: 3px;
   color: #d9dee1;
 }
+
+/* 辞書・索引の青緑バッジ */
+.cov-badge-ref {
+  background: var(--accent-deep);
+}

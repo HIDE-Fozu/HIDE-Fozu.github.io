@@ -4,51 +4,54 @@
 
    1冊の書き方:
      { title: "書名", url: "https://www.amazon.co.jp/dp/XXXXXXXXXX",
-       state: "学習中", progress: 40, comment: "ひとこと" }
-   - state    … "学習中" か "読了"
-   - progress … 読書の進行度（0〜100の数字）。書影の上端に緑のゲージで出る。読了の本には不要
-   - comment  … 書影にマウスを乗せたときの吹き出しに出るひとこと。空欄 "" なら出ない
-   - note     … 書名の後ろに（）で添える補足（Web教材など）。不要なら省略
-   - 書影はAmazonのURLから自動で取得する（画像URLを書く必要はない）
+       state: "学習中", read: 72, pages: 251, comment: "ひとこと" }
 
-   ジャンルの comment は、その領域についての一言。職務経歴書のリストの下に注記として出る。 */
+   - state … "学習中" / "読了" / "辞書・索引" のどれか
+       学習中     … read（読んだページ）と pages（総ページ数）を書くと、
+                    割合を自動計算して書影の上端に緑のゲージで出す。
+                    「100pまで読んだ」→ read: 100 に書き換えるだけ
+       読了       … 書影の右上に緑バッジ
+       辞書・索引 … 通読せず辞書として使う本。書影の右上に青緑バッジ
+   - comment … 書影にマウスを乗せたときの吹き出しに出るひとこと。空欄 "" なら出ない
+   - note    … 書名の後ろに（）で添える補足（Web教材など）。不要なら省略
+   - 書影はAmazonのURLから自動で取得する（画像URLを書く必要はない） */
 
 window.LEARNING = [
   { genre: "バックエンド基盤", items: [
-    { title: "1週間でMySQLの基礎が学べる本", url: "https://www.amazon.co.jp/dp/4295012556", state: "学習中", progress: 0, comment: "" },
-    { title: "認証と認可Keycloak入門", url: "https://www.amazon.co.jp/dp/4865943226", state: "学習中", progress: 0, comment: "" }
+    { title: "1週間でMySQLの基礎が学べる本", url: "https://www.amazon.co.jp/dp/4295012556", state: "学習中", read: 58, pages: 312, comment: "" },
+    { title: "認証と認可Keycloak入門", url: "https://www.amazon.co.jp/dp/4865943226", state: "学習中", comment: "" }
   ]},
   { genre: "Python", items: [
-    { title: "FastAPI本格入門", url: "https://www.amazon.co.jp/dp/4297144476", state: "学習中", progress: 0, comment: "" },
-    { title: "Pythonブートキャンプ［データ分析コース］", url: "https://www.amazon.co.jp/dp/4297149311", state: "学習中", progress: 0, comment: "" }
+    { title: "FastAPI本格入門", url: "https://www.amazon.co.jp/dp/4297144476", state: "学習中", read: 72, pages: 251, comment: "" },
+    { title: "Pythonブートキャンプ［データ分析コース］", url: "https://www.amazon.co.jp/dp/4297149311", state: "学習中", read: 48, pages: 546, comment: "" }
   ]},
   { genre: "設計・アーキテクチャ", items: [
-    { title: "リファクタリング - 既存のコードを安全に改善する", url: "https://www.amazon.co.jp/dp/4274224546", state: "学習中", progress: 0, comment: "" },
-    { title: "マルチテナントSaaSアーキテクチャの構築", url: "https://www.amazon.co.jp/dp/4814401019", state: "学習中", progress: 0, comment: "" },
+    { title: "リファクタリング - 既存のコードを安全に改善する", url: "https://www.amazon.co.jp/dp/4274224546", state: "学習中", comment: "" },
+    { title: "マルチテナントSaaSアーキテクチャの構築", url: "https://www.amazon.co.jp/dp/4814401019", state: "学習中", comment: "" },
     { title: "部下としてのAI", url: "https://www.amazon.co.jp/dp/4163921141", state: "読了", comment: "" }
   ]},
   { genre: "Git", items: [
-    { title: "Learn Git Branching", url: "https://learngitbranching.js.org/?locale=ja", note: "Web教材", state: "学習中", progress: 0, comment: "" },
-    { title: "Git入門 コマンドライン演習80", url: "https://www.amazon.co.jp/dp/4798066338", state: "学習中", progress: 0, comment: "" }
+    { title: "Learn Git Branching", url: "https://learngitbranching.js.org/?locale=ja", note: "Web教材", state: "学習中", comment: "" },
+    { title: "Git入門 コマンドライン演習80", url: "https://www.amazon.co.jp/dp/4798066338", state: "学習中", read: 72, pages: 328, comment: "" }
   ]},
   { genre: "基本情報技術者", items: [
     { title: "令和03年 栢木先生の基本情報技術者教室", url: "https://www.amazon.co.jp/dp/B08P6Z2F4N", state: "読了", comment: "" },
-    { title: "令和06年 基本情報技術者 パーフェクトラーニング過去問題集", url: "https://www.amazon.co.jp/dp/4297138832", state: "学習中", progress: 0, comment: "" }
+    { title: "令和06年 基本情報技術者 パーフェクトラーニング過去問題集", url: "https://www.amazon.co.jp/dp/4297138832", state: "学習中", comment: "" }
   ]},
   { genre: "UI・デザイン", comment: "実装経験が少ない領域なので、重点的に読んでいます。", items: [
-    { title: "プロセス・オブ・UI/UXデザイン", url: "https://www.amazon.co.jp/dp/4798185906", state: "学習中", progress: 0, comment: "" },
-    { title: "データ視覚化のデザイン", url: "https://www.amazon.co.jp/dp/4815604053", state: "学習中", progress: 0, comment: "" },
-    { title: "やってはいけないデザイン", url: "https://www.amazon.co.jp/dp/4798145939", state: "学習中", progress: 0, comment: "" }
+    { title: "プロセス・オブ・UI/UXデザイン", url: "https://www.amazon.co.jp/dp/4798185906", state: "辞書・索引", comment: "" },
+    { title: "データ視覚化のデザイン", url: "https://www.amazon.co.jp/dp/4815604053", state: "辞書・索引", comment: "" },
+    { title: "やってはいけないデザイン", url: "https://www.amazon.co.jp/dp/4798145939", state: "辞書・索引", comment: "" }
   ]},
   { genre: "VBA", items: [
-    { title: "Excel VBA開発を超効率化するプログラミングテクニック", url: "https://www.amazon.co.jp/dp/4297140233", state: "学習中", progress: 0, comment: "" }
+    { title: "Excel VBA開発を超効率化するプログラミングテクニック", url: "https://www.amazon.co.jp/dp/4297140233", state: "学習中", comment: "" }
   ]},
   { genre: "Unity", items: [
     { title: "Unity2019 C#スクリプト超入門", url: "https://www.amazon.co.jp/dp/4798058882", state: "読了", comment: "" }
   ]},
   { genre: "マネジメント・心理学", items: [
-    { title: "理不尽仕事論", url: "https://www.amazon.co.jp/dp/4163920935", state: "学習中", progress: 0, comment: "" },
-    { title: "認知バイアス 心に潜むふしぎな働き", url: "https://www.amazon.co.jp/dp/4065219515", state: "学習中", progress: 0, comment: "" }
+    { title: "理不尽仕事論", url: "https://www.amazon.co.jp/dp/4163920935", state: "学習中", comment: "" },
+    { title: "認知バイアス 心に潜むふしぎな働き", url: "https://www.amazon.co.jp/dp/4065219515", state: "読了", comment: "" }
   ]}
 ];
 
@@ -66,11 +69,21 @@ window.LEARNING = [
     return esc(b.title) + (b.note ? "（" + esc(b.note) + "）" : "");
   }
 
-  /* 進行度の一文（吹き出し用） */
+  /* 読んだページ数から進行度(%)を計算する。データが無ければ null */
+  function percent(b) {
+    if (typeof b.read === "number" && typeof b.pages === "number" && b.pages > 0) {
+      return Math.max(0, Math.min(100, Math.round(b.read / b.pages * 100)));
+    }
+    return null;
+  }
+
+  /* 状態の一文（吹き出し・リストの右端用） */
   function stateText(b) {
     if (b.state === "読了") { return "読了"; }
-    if (typeof b.progress === "number") { return "読書中 " + b.progress + "%"; }
-    return esc(b.state);
+    if (b.state === "辞書・索引") { return "辞書・索引"; }
+    var p = percent(b);
+    if (p !== null) { return "読書中 " + b.read + "/" + b.pages + "ページ（" + p + "%）"; }
+    return "学習中";
   }
 
   /* 書影のURL。Amazonの商品IDから作る */
@@ -79,17 +92,18 @@ window.LEARNING = [
     return m ? "https://images-na.ssl-images-amazon.com/images/P/" + m[1] + ".09.LZZZZZZZ.jpg" : null;
   }
 
-  /* 書影1枚ぶん。読了は緑バッジ、読書中は上端に進行ゲージ。
-     マウスを乗せたときの吹き出し内容は data 属性に持たせる */
+  /* 書影1枚ぶん。読了=緑バッジ / 辞書・索引=青緑バッジ / ページ入力あり=上端ゲージ */
   function cover(b) {
     var src = coverSrc(b);
     var inner = src
       ? '<img loading="lazy" src="' + src + '" alt="' + esc(b.title) + '">'
       : '<span class="cov-txt">' + label(b) + "</span>";
+    var p = percent(b);
     if (b.state === "読了") {
       inner += '<span class="cov-badge">読了</span>';
-    } else if (typeof b.progress === "number") {
-      var p = Math.max(0, Math.min(100, b.progress));
+    } else if (b.state === "辞書・索引") {
+      inner += '<span class="cov-badge cov-badge-ref">辞書・索引</span>';
+    } else if (p !== null) {
       inner += '<span class="cov-gauge"><span class="cov-gauge-fill" style="width:' + p + '%"></span></span>';
     }
     var tipAttrs = ' data-tip-title="' + esc(b.title) + '"'
@@ -112,12 +126,17 @@ window.LEARNING = [
       }
       for (var j = 0; j < g.items.length; j++) {
         var b = g.items[j];
+        var p = percent(b);
+        var st = b.state === "読了" ? "読了"
+          : b.state === "辞書・索引" ? "辞書・索引"
+          : p !== null ? "学習中 " + p + "%"
+          : "学習中";
         html += '<li><span class="book-tag">' + esc(g.genre) + "</span>";
         html += b.url
           ? '<a class="book-title" href="' + esc(b.url) + '" rel="noopener">' + label(b) + "</a>"
           : '<span class="book-title">' + label(b) + "</span>";
         html += '<span class="book-state' + (b.state === "読了" ? " done" : "") + '">'
-          + esc(b.state) + "</span></li>";
+          + st + "</span></li>";
       }
     }
     return html + "</ul>" + notes;
