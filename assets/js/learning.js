@@ -52,7 +52,7 @@ window.LEARNING = [
   ]},
   { genre: "心理学・哲学", items: [
     { title: "認知バイアス 心に潜むふしぎな働き", url: "https://www.amazon.co.jp/dp/4065219515", state: "読了", comment: "統計的に証明された思考の偏り＝バイアスと、「人にはバイアスがある」ということ自体がバイアスである。という学びがあった本です。" },
-    { title: "ショーペンハウアー全集1～3", state: "読了", comment: "哲学書。感覚を言語化することで自己理解が深まります。\n特に好きなのは理性と感情の間に「悟性」があるという話です。" }
+    { title: "ショーペンハウアー全集1～3", url: "https://www.amazon.co.jp/dp/B000J9BJ0W", state: "読了", comment: "感覚を言語的に理解することで物事の捉え方が変わりました。\n理性と感情の間に「悟性」があるという話が特に好きでした。" }
   ]}
 ];
 
@@ -159,6 +159,27 @@ window.LEARNING = [
   for (var k = 0; k < mounts.length; k++) {
     var mode = mounts[k].getAttribute("data-learning");
     mounts[k].innerHTML = mode === "band" ? bandHtml() : listHtml();
+  }
+
+  /* Amazonに書影が無い本は1x1のダミー画像が返る。
+     その場合は題名入りの無地カバーに自動で切り替える */
+  var imgs = document.querySelectorAll(".cov img");
+  for (var m = 0; m < imgs.length; m++) {
+    (function (img) {
+      function fix() {
+        if (img.naturalWidth <= 1) {
+          var span = document.createElement("span");
+          span.className = "cov-txt";
+          span.textContent = img.alt;
+          img.parentNode.replaceChild(span, img);
+        }
+      }
+      if (img.complete) { fix(); }
+      else {
+        img.addEventListener("load", fix);
+        img.addEventListener("error", fix);
+      }
+    })(imgs[m]);
   }
 
   /* 書影の吹き出し（題名・進行度・コメント）。
