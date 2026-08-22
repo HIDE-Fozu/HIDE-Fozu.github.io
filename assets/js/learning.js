@@ -14,7 +14,8 @@
        その他 … 書いた文字がそのまま青緑バッジになる（辞書・索引、参考 など）
    - comment … 書影にマウスを乗せたときの吹き出しに出るひとこと。空欄 "" なら出ない
    - note    … 書名の後ろに（）で添える補足（Web教材など）。不要なら省略
-   - 書影はAmazonのURLから自動で取得する（URLが無い本は題名入りの無地カバーになる） */
+   - img     … 書影の画像パス。Amazonに書影が無い本だけ指定する（例: "assets/img/books/xxx.jpg"）
+   - 書影はAmazonのURLから自動で取得する（URLも img も無い本は題名入りの無地カバーになる） */
 
 window.LEARNING = [
   { genre: "Git", items: [
@@ -52,7 +53,7 @@ window.LEARNING = [
   ]},
   { genre: "心理学・哲学", items: [
     { title: "認知バイアス 心に潜むふしぎな働き", url: "https://www.amazon.co.jp/dp/4065219515", state: "読了", comment: "統計的に証明された思考の偏り＝バイアスと、「人にはバイアスがある」ということ自体がバイアスである。という学びがあった本です。" },
-    { title: "ショーペンハウアー全集1～3", url: "https://www.amazon.co.jp/dp/B000J9BJ0W", state: "読了", comment: "感覚を言語的に理解することで物事の捉え方が変わりました。\n理性と感情の間に「悟性」があるという話が特に好きでした。" }
+    { title: "ショーペンハウアー全集1～3", url: "https://www.amazon.co.jp/dp/B000J9BJ0W", img: "assets/img/books/schopenhauer.jpg", state: "読了", comment: "感覚を言語的に理解することで物事の捉え方が変わりました。\n理性と感情の間に「悟性」があるという話が特に好きでした。" }
   ]}
 ];
 
@@ -94,7 +95,7 @@ window.LEARNING = [
 
   /* 書影1枚ぶん。読了=緑バッジ / 学習中でページ入力あり=上端ゲージ / その他の状態=青緑バッジ */
   function cover(b, genre) {
-    var src = coverSrc(b);
+    var src = b.img || coverSrc(b); // img があればそれを優先（Amazonに書影が無い本用）
     var inner = src
       ? '<img loading="lazy" src="' + src + '" alt="' + esc(b.title) + '">'
       : '<span class="cov-txt">' + label(b) + "</span>";
