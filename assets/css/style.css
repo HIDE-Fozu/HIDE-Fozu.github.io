@@ -502,6 +502,15 @@ a.learn-item-title:hover { color: var(--accent); }
   color: var(--accent-deep);
   font-weight: 600;
 }
+/* リンクにしたバッジ(ストアページへ飛ぶ) */
+a.status {
+  text-decoration: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+a.status:hover {
+  border-color: var(--accent-deep);
+  box-shadow: 0 2px 8px rgba(16, 32, 34, .08);
+}
 
 /* --- 11. 作品詳細 ------------------------------------------ */
 .detail-meta {
@@ -752,6 +761,14 @@ a.learn-item-title:hover { color: var(--accent); }
   font-size: .75rem;
   color: var(--accent-deep);
   margin-left: 8px;
+}
+/* キャプション内のリンク(タイトル=詳細/ストア・バッジ=ストア)。
+   .gallery-grid a の display:block を打ち消して行内に並べる */
+.gallery-cap a {
+  display: inline;
+}
+.gallery-cap a:hover {
+  text-decoration: underline;
 }
 @media (max-width: 640px) {
   .gallery-img img { height: 300px; }
