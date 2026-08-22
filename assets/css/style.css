@@ -477,6 +477,12 @@ a.learn-item-title:hover { color: var(--accent); }
   text-decoration: none;
 }
 .card-more::after { content: " →"; }
+/* card-foot 内に複数リンクを並べる場合の入れ物 */
+.card-links {
+  display: inline-flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
 /* --- 10. ステータスバッジ ---------------------------------- */
 .status {
