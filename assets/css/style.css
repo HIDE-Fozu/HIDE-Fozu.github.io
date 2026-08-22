@@ -679,12 +679,17 @@ a.learn-item-title:hover { color: var(--accent); }
 
 /* 代表作: スクショ+1行キャプションのギャラリー（枠なし） */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  display: flex;
   gap: 28px;
-  align-items: end;
-  margin-top: 36px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
   list-style: none;
+  margin: 36px 0 0;
+  padding: 2px 2px 10px;
+}
+.gallery-grid > li {
+  flex: 0 0 auto;
 }
 .gallery-grid a {
   display: block;
@@ -703,13 +708,30 @@ a.learn-item-title:hover { color: var(--accent); }
   box-shadow: 0 6px 22px rgba(16, 32, 34, .07);
 }
 .gallery-img img {
-  width: 100%;
-  height: auto;
+  max-width: none;
+  width: auto;
+  height: 440px;
   display: block;
 }
-.gallery-split { display: flex; }
-.gallery-split img { width: 50%; }
-.gallery-split img + img { border-left: 1px solid var(--line-soft); }
+/* WEBアプリ(単独画像)はやや低め。2画面並び(スマホ)は440pxのまま */
+.gallery-img:not(.gallery-split) > img { height: 352px; }
+.gallery-split {
+  display: flex;
+  gap: 12px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+.gallery-split img {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.gallery-grid a:hover .gallery-split img {
+  border-color: #cfdcdd;
+  box-shadow: 0 6px 22px rgba(16, 32, 34, .07);
+}
 .gallery-cap {
   padding: 10px 2px 0;
   font-size: .8rem;
@@ -724,4 +746,36 @@ a.learn-item-title:hover { color: var(--accent); }
   font-size: .75rem;
   color: var(--accent-deep);
   margin-left: 8px;
+}
+@media (max-width: 640px) {
+  .gallery-img img { height: 300px; }
+  .gallery-img:not(.gallery-split) > img { height: 240px; }
+}
+
+/* ギャラリーの横送りボタン */
+.gallery-wrap { position: relative; }
+.gallery-btn {
+  position: absolute;
+  top: 44%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .95);
+  color: var(--accent-deep);
+  font-size: 1.6rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(16, 32, 34, .14);
+}
+.gallery-btn:hover { border-color: #cfdcdd; color: var(--accent); }
+.gallery-btn-prev { left: -10px; }
+.gallery-btn-next { right: -10px; }
+@media (max-width: 640px) {
+  .gallery-btn { width: 36px; height: 36px; font-size: 1.3rem; }
 }

@@ -20,7 +20,7 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>ポートフォリオ</a>
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>佐藤秀明 ポートフォリオ</a>
     <nav class="site-nav" aria-label="メインナビゲーション">
       <ul>
         <li><a href="index.html" aria-current="page">ホーム</a></li>
@@ -34,8 +34,8 @@
 <main id="main">
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">Portfolio</span>
-      <h1>佐藤秀明 ポートフォリオ</h1>
+      <span class="eyebrow">Introduction</span>
+      <h1>はじめに</h1>
       <p class="lead">2011年からPCに触れ、2024年に生成AIをきっかけに開発を開始。<br>
 VBAによる業務自動化からWeb・スマホアプリ開発へと領域を広げています。<br>
 今後は低レイヤーやコンテナを活用したセキュアな設計を理解し、人の役に立つエンジニアを目指します。</p>
@@ -76,6 +76,8 @@ VBAによる業務自動化からWeb・スマホアプリ開発へと領域を�
     <div class="wrap">
       <span class="eyebrow">development</span>
       <h2>開発中</h2>
+      <div class="gallery-wrap">
+      <button class="gallery-btn gallery-btn-prev" type="button" aria-label="前へスクロール">&#8249;</button>
       <ul class="gallery-grid">
         <li>
           <a href="apps/kakeibo/index.html">
@@ -89,9 +91,9 @@ VBAによる業務自動化からWeb・スマホアプリ開発へと領域を�
         <li>
           <a href="works/backoffice/index.html">
             <div class="gallery-img">
-              <img src="assets/img/bo-thumb.png" width="816" height="459" alt="給与明細一覧の画面">
+              <img src="assets/img/bo-attendance.png" width="1280" height="900" alt="管理者の勤怠マトリクス画面。従業員を縦、日付を横に並べた表に実働時間が入っている">
             </div>
-            <div class="gallery-cap"><strong>勤怠打刻・給与計算アプリ<span class="st">開発中</span></strong>Webアプリ / Next.js</div>
+            <div class="gallery-cap"><strong>勤怠打刻・管理アプリ<span class="st">開発中</span></strong>Webアプリ / Next.js</div>
           </a>
         </li>
         <li>
@@ -103,6 +105,8 @@ VBAによる業務自動化からWeb・スマホアプリ開発へと領域を�
           </a>
         </li>
       </ul>
+      <button class="gallery-btn gallery-btn-next" type="button" aria-label="次へスクロール">&#8250;</button>
+      </div>
     </div>
   </section>
 </main>
@@ -119,6 +123,7 @@ VBAによる業務自動化からWeb・スマホアプリ開発へと領域を�
   </div>
 </footer>
 <script src="assets/js/tech-icons.js"></script>
+<script src="assets/js/gallery.js"></script>
 <script src="assets/js/learning.js"></script>
 </body>
 </html>
