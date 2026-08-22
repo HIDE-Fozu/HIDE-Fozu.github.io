@@ -420,6 +420,9 @@ a.learn-item-title:hover { color: var(--accent); }
 /* 縦長のスマホ画面はカレンダー部分が入るよう上端寄りで切る */
 .card-thumb-phone img { object-position: 50% 1%; }
 
+/* 画像全体を切り抜かずに枠へ収めるサムネイル */
+.card-thumb-contain img { object-fit: contain; }
+
 /* 画像がない作品用のテキストサムネイル */
 .card-thumb-text {
   display: flex;
@@ -672,4 +675,53 @@ a.learn-item-title:hover { color: var(--accent); }
     transition-duration: .01ms !important;
     animation-duration: .01ms !important;
   }
+}
+
+/* 代表作: スクショ+1行キャプションのギャラリー（枠なし） */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  gap: 28px;
+  align-items: end;
+  margin-top: 36px;
+  list-style: none;
+}
+.gallery-grid a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.gallery-img {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.gallery-grid a:hover .gallery-img {
+  border-color: #cfdcdd;
+  box-shadow: 0 6px 22px rgba(16, 32, 34, .07);
+}
+.gallery-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.gallery-split { display: flex; }
+.gallery-split img { width: 50%; }
+.gallery-split img + img { border-left: 1px solid var(--line-soft); }
+.gallery-cap {
+  padding: 10px 2px 0;
+  font-size: .8rem;
+  color: var(--ink-2);
+}
+.gallery-cap strong {
+  display: block;
+  font-size: .95rem;
+  color: var(--ink);
+}
+.gallery-cap .st {
+  font-size: .75rem;
+  color: var(--accent-deep);
+  margin-left: 8px;
 }
