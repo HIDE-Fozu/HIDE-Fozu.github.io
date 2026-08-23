@@ -27,6 +27,15 @@ document.querySelectorAll('.gallery-wrap').forEach(function (wrap) {
   function step() { return Math.round(strip.clientWidth * 0.8); }
   function max() { return strip.scrollWidth - strip.clientWidth; }
 
+  /* あふれていない(スクロール不要な)ギャラリーでは送りボタンを隠す */
+  function updateButtons() {
+    var hidden = max() <= 2;
+    prev.hidden = hidden;
+    next.hidden = hidden;
+  }
+  updateButtons();
+  window.addEventListener('resize', updateButtons);
+
   next.addEventListener('click', function () {
     if (strip.scrollLeft >= max() - 2) {
       animateTo(0, 700);                   // 右端→先頭へ1周(写真が左端まで戻る)
