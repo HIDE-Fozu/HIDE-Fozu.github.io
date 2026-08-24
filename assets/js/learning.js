@@ -34,7 +34,14 @@ window.LEARNING = [
     { title: "令和03年 栢木先生の基本情報技術者教室", url: "https://www.amazon.co.jp/dp/B08P6Z2F4N", state: "読了", comment: "部分的な興味はあるものの幅の広さに挫折" },
     { title: "令和06年 基本情報技術者 パーフェクトラーニング過去問題集", url: "https://www.amazon.co.jp/dp/4297138832", state: "学習中", read: 76, pages: 392, comment: "改めて学習中、9月6日に試験を受けます。" }
   ]},
-  { genre: "ビジネス書", items: [
+  { genre: "DB", items: [
+    { title: "1週間でMySQLの基礎が学べる本", url: "https://www.amazon.co.jp/dp/4295012556", state: "学習中", read: 58, pages: 312, comment: "" }
+  ]},
+  { genre: "その他言語", items: [
+    { title: "Excel VBA開発を超効率化するプログラミングテクニック", url: "https://www.amazon.co.jp/dp/4297140233", state: "学習中", read: 144, pages: 380, comment: "VBAでの開発時にモジュール管理方法などを学びました" },
+    { title: "Unity2019 C#スクリプト超入門", url: "https://www.amazon.co.jp/dp/4798058882", state: "読了", comment: "スマホゲームであればGUIで作成できることを学びましたが、自分はもっとクオリティの高いゲームが作りたいと考え、先へは進みませんでした。" }
+  ]},
+    { genre: "ビジネス書", items: [
     { title: "部下としてのAI", url: "https://www.amazon.co.jp/dp/4163921141", state: "読了", comment: "Microsoftのエンジニアさんを感じられる素晴らしい書籍でした" },
     { title: "理不尽仕事論", url: "https://www.amazon.co.jp/dp/4163920935", state: "学習中", comment: "マネジメントで参考にしている坂井風太さんの書籍です。" }
   ]},
@@ -43,19 +50,12 @@ window.LEARNING = [
     { title: "データ視覚化のデザイン", url: "https://www.amazon.co.jp/dp/4815604053", state: "辞書・索引", comment: "数値をグラフ化する時の参考資料" },
     { title: "やってはいけないデザイン", url: "https://www.amazon.co.jp/dp/4798145939", state: "辞書・索引", comment: "デザインの基礎的な参考資料" }
   ]},
-  { genre: "DB", items: [
-    { title: "1週間でMySQLの基礎が学べる本", url: "https://www.amazon.co.jp/dp/4295012556", state: "学習中", read: 58, pages: 312, comment: "" }
-  ]},
-  { genre: "その他言語", items: [
-    { title: "Excel VBA開発を超効率化するプログラミングテクニック", url: "https://www.amazon.co.jp/dp/4297140233", state: "学習中", read: 144, pages: 380, comment: "VBAでの開発時にモジュール管理方法などを学びました" },
-    { title: "Unity2019 C#スクリプト超入門", url: "https://www.amazon.co.jp/dp/4798058882", state: "読了", comment: "スマホゲームであればGUIで作成できることを学びましたが、自分はもっとクオリティの高いゲームが作りたいと考え、先へは進みませんでした。" }
-  ]},
   { genre: "心理学・哲学", items: [
     { title: "認知バイアス 心に潜むふしぎな働き", url: "https://www.amazon.co.jp/dp/4065219515", state: "読了", comment: "統計的に証明された思考の偏り＝バイアスと、「人にはバイアスがある」ということ自体がバイアスである。という学びがあった本です。" },
     { title: "ショーペンハウアー全集1～3", url: "https://www.amazon.co.jp/dp/B000J9BJ0W", img: "assets/img/books/schopenhauer.jpg", state: "読了", comment: "感覚を言語的に理解することで物事の捉え方が変わりました。\n理性と感情の間に「悟性」があるという話が特に好きでした。" }
   ]},
   { genre: "積読", items: [
-    { title: "認証と認可Keycloak入門", url: "https://www.amazon.co.jp/dp/4865943226", state: "積読", comment: "" }
+    { title: "認証と認可Keycloak入門", url: "https://www.amazon.co.jp/dp/4865943226", comment: "" }
   ]}
 ];
 
