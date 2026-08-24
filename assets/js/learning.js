@@ -19,12 +19,20 @@
 
 window.LEARNING = [
   { genre: "Git", items: [
-    { title: "Git入門 コマンドライン演習80", url: "https://www.amazon.co.jp/dp/4798066338", state: "学習中", read: 72, pages: 328, comment: "Gitを基礎から学習中です。" },
+    { title: "Git入門 コマンドライン演習80", url: "https://www.amazon.co.jp/dp/4798066338", state: "学習中", read: 96, pages: 328, comment: "Gitを基礎から学習中です。" },
     { title: "Learn Git Branching", url: "https://learngitbranching.js.org/?locale=ja", note: "Web教材", state: "学習中", read: 7, pages: 20, comment: "GitをコマンドとGUIで学習できるサイトです。" }
   ]},
   { genre: "Python", items: [
-    { title: "FastAPI本格入門", url: "https://www.amazon.co.jp/dp/4297144476", state: "学習中", read: 72, pages: 251, comment: "業務で作成したアプリのフレームワーク学習" },
+    { title: "FastAPI本格入門", url: "https://www.amazon.co.jp/dp/4297144476", state: "学習中", read: 80, pages: 251, comment: "業務で作成したアプリのフレームワーク学習" },
     { title: "Pythonブートキャンプ［データ分析コース］", url: "https://www.amazon.co.jp/dp/4297149311", state: "学習中", read: 48, pages: 546, comment: "Pythonを基礎から学習" }
+  ]},
+  { genre: "設計", items: [
+    { title: "リファクタリング - 既存のコードを安全に改善する", url: "https://www.amazon.co.jp/dp/4274224546", state: "学習中", comment: "コードレビューの手法を学んでいます。面白いです。" },
+    { title: "マルチテナントSaaSアーキテクチャの構築", url: "https://www.amazon.co.jp/dp/4814401019", state: "参考", comment: "マルチテナント方式の参考例として" }
+  ]},
+  { genre: "FE試験", items: [
+    { title: "令和03年 栢木先生の基本情報技術者教室", url: "https://www.amazon.co.jp/dp/B08P6Z2F4N", state: "読了", comment: "部分的な興味はあるものの幅の広さに挫折" },
+    { title: "令和06年 基本情報技術者 パーフェクトラーニング過去問題集", url: "https://www.amazon.co.jp/dp/4297138832", state: "学習中", read: 76, pages: 392, comment: "改めて学習中、9月6日に試験を受けます。" }
   ]},
   { genre: "ビジネス書", items: [
     { title: "部下としてのAI", url: "https://www.amazon.co.jp/dp/4163921141", state: "読了", comment: "Microsoftのエンジニアさんを感じられる素晴らしい書籍でした" },
@@ -34,15 +42,6 @@ window.LEARNING = [
     { title: "プロセス・オブ・UI/UXデザイン", url: "https://www.amazon.co.jp/dp/4798185906", state: "辞書・索引", comment: "スマホUIの言語的理解を深める資料" },
     { title: "データ視覚化のデザイン", url: "https://www.amazon.co.jp/dp/4815604053", state: "辞書・索引", comment: "数値をグラフ化する時の参考資料" },
     { title: "やってはいけないデザイン", url: "https://www.amazon.co.jp/dp/4798145939", state: "辞書・索引", comment: "デザインの基礎的な参考資料" }
-  ]},
-  { genre: "設計", items: [
-    { title: "リファクタリング - 既存のコードを安全に改善する", url: "https://www.amazon.co.jp/dp/4274224546", state: "学習中", comment: "コードレビューの手法を学んでいます。面白いです。" },
-    { title: "認証と認可Keycloak入門", url: "https://www.amazon.co.jp/dp/4865943226", state: "学習中", comment: "" },
-    { title: "マルチテナントSaaSアーキテクチャの構築", url: "https://www.amazon.co.jp/dp/4814401019", state: "参考", comment: "マルチテナント方式の参考例として" }
-  ]},
-  { genre: "FE試験", items: [
-    { title: "令和03年 栢木先生の基本情報技術者教室", url: "https://www.amazon.co.jp/dp/B08P6Z2F4N", state: "読了", comment: "部分的な興味はあるものの幅の広さに挫折" },
-    { title: "令和06年 基本情報技術者 パーフェクトラーニング過去問題集", url: "https://www.amazon.co.jp/dp/4297138832", state: "学習中", comment: "改めて学習中、9月6日に試験を受けます。" }
   ]},
   { genre: "DB", items: [
     { title: "1週間でMySQLの基礎が学べる本", url: "https://www.amazon.co.jp/dp/4295012556", state: "学習中", read: 58, pages: 312, comment: "" }
@@ -54,6 +53,9 @@ window.LEARNING = [
   { genre: "心理学・哲学", items: [
     { title: "認知バイアス 心に潜むふしぎな働き", url: "https://www.amazon.co.jp/dp/4065219515", state: "読了", comment: "統計的に証明された思考の偏り＝バイアスと、「人にはバイアスがある」ということ自体がバイアスである。という学びがあった本です。" },
     { title: "ショーペンハウアー全集1～3", url: "https://www.amazon.co.jp/dp/B000J9BJ0W", img: "assets/img/books/schopenhauer.jpg", state: "読了", comment: "感覚を言語的に理解することで物事の捉え方が変わりました。\n理性と感情の間に「悟性」があるという話が特に好きでした。" }
+  ]},
+  { genre: "積読", items: [
+    { title: "認証と認可Keycloak入門", url: "https://www.amazon.co.jp/dp/4865943226", state: "積読", comment: "" }
   ]}
 ];
 
