@@ -381,65 +381,40 @@ a.learn-item-title:hover { color: var(--accent); }
   white-space: nowrap;
 }
 
-/* --- 9. カードグリッド ------------------------------------- */
+/* --- 9. 制作実績: 画像左・本文右の作品リスト ----------------- */
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-  gap: var(--gap);
-  margin-top: 36px;
+  margin-top: 24px;
   list-style: none;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg);
-  overflow: hidden;
-  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  gap: 20px;
+  padding-block: 36px;
 }
-.card:hover {
+.card:first-child { padding-top: 8px; }
+.card + .card { border-top: 1px solid var(--line-soft); }
+
+/* スクショ(詳細ページへのリンク): 画像・枠線はホームのギャラリーと共通 */
+.card-shot {
+  display: block;
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+.card-shot:hover .gallery-img {
   border-color: #cfdcdd;
   box-shadow: 0 6px 22px rgba(16, 32, 34, .07);
-  transform: translateY(-2px);
 }
-
-.card-thumb {
-  background: var(--bg-tint);
-  border-bottom: 1px solid var(--line-soft);
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
+.card-shot:hover .gallery-split img {
+  border-color: #cfdcdd;
+  box-shadow: 0 6px 22px rgba(16, 32, 34, .07);
 }
-.card-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-/* 縦長のスマホ画面はカレンダー部分が入るよう上端寄りで切る */
-.card-thumb-phone img { object-position: 50% 1%; }
-
-/* 画像全体を切り抜かずに枠へ収めるサムネイル */
-.card-thumb-contain img { object-fit: contain; }
-
-/* 画像がない作品用のテキストサムネイル */
-.card-thumb-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background:
-    linear-gradient(135deg, var(--accent-tint) 0%, var(--bg-soft) 100%);
-}
-.card-thumb-text span {
-  font-family: var(--font-en);
-  font-size: 1.28rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  color: var(--accent);
-  text-align: center;
-  line-height: 1.5;
+/* Webアプリ(単独画像)は切り取りゼロのまま幅なりに縮む */
+.card .gallery-img:not(.gallery-split) > img {
+  height: auto;
+  width: auto;
+  max-width: 100%;
 }
 
 .card-body {
@@ -447,14 +422,27 @@ a.learn-item-title:hover { color: var(--accent); }
   flex-direction: column;
   flex: 1;
   gap: 10px;
-  padding: 20px 22px 22px;
+  min-width: 0;
+}
+
+/* 横幅が足りる画面では画像左・本文右に並べる */
+@media (min-width: 960px) {
+  .card {
+    flex-direction: row;
+    align-items: center;
+    gap: 36px;
+  }
+  .card .gallery-img:not(.gallery-split) > img {
+    height: 300px;
+    max-width: none;
+  }
 }
 .card-kicker {
   font-size: .76rem;
   letter-spacing: .08em;
   color: var(--ink-3);
 }
-.card h3 { font-size: 1.04rem; }
+.card h3 { font-size: 1.15rem; }
 .card h3 a { text-decoration: none; color: var(--ink); }
 .card h3 a:hover { color: var(--accent); }
 .card p {
@@ -463,7 +451,6 @@ a.learn-item-title:hover { color: var(--accent); }
   line-height: 1.8;
 }
 .card-foot {
-  margin-top: auto;
   padding-top: 6px;
   display: flex;
   align-items: center;
@@ -672,7 +659,6 @@ a.status:hover {
   .wrap { padding-inline: 20px; }
   .site-header .wrap { min-height: 56px; padding-block: 8px; }
   .site-nav a { padding: 5px 9px; font-size: .85rem; }
-  .card-grid,
   .skill-grid { grid-template-columns: minmax(0, 1fr); }
   .shots-phone { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
   .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
