@@ -34,7 +34,7 @@
   <div class="wrap page-head">
     <span class="eyebrow">Webアプリ</span>
     <h1>勤怠打刻・管理アプリ</h1>
-    <p class="lead">打刻から勤怠の集計、給与明細の確定と本人への公開までを、ひとつづきの流れとして扱う業務システムです。</p>
+    <p class="lead">一連のHR機能をClaude Codeで実現しましたが、脆弱性や負荷テスト等の様々な検証が必要なWEBアプリです。</p>
     <dl class="detail-meta">
       <div><dt>種別</dt><dd>Webアプリケーション（マルチテナント）</dd></div>
       <div><dt>技術</dt><dd>Next.js 16 (App Router)・React 19・TypeScript・Drizzle ORM・PostgreSQL 16</dd></div>
@@ -45,24 +45,24 @@
 
   <section class="section section-soft">
     <div class="wrap prose">
-      <h2>動かして試す</h2>
-      <p>デモ環境を公開しています。データはすべて架空で、どなたでも自由に操作できます。</p>
+      <h2>デモ版</h2>
+      <p>データはすべて架空のものです。</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://demo.fozu.jp/login" rel="noopener">従業員画面のデモを開く</a>
         <a class="btn btn-ghost" href="https://demo.fozu.jp/admin/login" rel="noopener">管理者画面のデモを開く</a>
       </div>
       <p>ログイン情報（デモ用に公開しているものです）:</p>
       <ul>
-        <li>従業員: 従業員コード <code>E001</code> / PIN <code>1234</code> — 給与明細・打刻・申告を試せます</li>
-        <li>管理者: メール <code>demo@fozu.jp</code> / パスワード <code>fozu-demo-2026</code> — 勤怠マトリクスの確認、給与明細の編集と確定を試せます</li>
+        <li>従業員コード / PIN：<code>E001</code> / <code>1234</code> — 給与明細・打刻・申告を試せます</li>
+        <li>管理者メールアドレス / パスワード：<code>demo@fozu.jp</code> / <code>fozu-demo-2026</code> — 勤怠の確認、給与明細の編集と確定を試せます</li>
       </ul>
-      <p class="note">氏名・金額はすべて架空のデモデータです。打刻や明細の確定も自由に操作してかまいません（デモデータは不定期に初期状態へ戻します）。</p>
+      <p class="note">打刻や明細の確定も自由に操作していただいて大丈夫です。（デモデータは不定期に初期状態へ戻します）</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap prose">
-      <h2>概要</h2>
+      <h2>開発の背景（編集中）</h2>
       <p>経理として給与計算に関わるなかで、打刻・勤怠・給与がそれぞれ別の道具に分かれていることが手戻りの原因になっていると感じました。そこで、打刻した記録がそのまま日々の勤怠に積み上がり、その月を締めるとその数字から給与明細の下書きが起きる、という流れをそのまま画面にしています。</p>
       <p>複数の利用先が同じ仕組みを使うことを前提に、データベースの行単位でテナントを分ける構成を最初から入れました。控除のように人が判断する部分は手入力に残し、機械が確実に出せる部分だけを自動計算しています。</p>
     </div>
@@ -70,7 +70,7 @@
 
   <section class="section section-soft">
     <div class="wrap prose">
-      <h2>主な機能</h2>
+      <h2>主な機能（編集中）</h2>
       <ul class="feature-list">
         <li><b>打刻</b> — 勤務先と補足を添えて出勤・退勤を記録します。打刻は追記だけで上書きせず、送信ごとの識別子に一意制約を掛けて、通信のやり直しで二重に届いた打刻を1件として吸収します。</li>
         <li><b>勤怠集計</b> — 実働と残業を1分単位・丸めなしで集計し、深夜と法定休日を区分します。打刻漏れ・24時間を超える勤務・6時間超で休憩なし・日跨ぎなど9種類のフラグを自動で付け、要確認の日を洗い出します。月次を確定すると編集できなくなり、必要なら再オープンできます。</li>
