@@ -19,7 +19,7 @@
 
 window.LEARNING = [
   { genre: "Git", items: [
-    { title: "Git入門 コマンドライン演習80", url: "https://www.amazon.co.jp/dp/4798066338", state: "学習中", read: 96, pages: 328, comment: "Gitを基礎から学習中です。" },
+    { title: "Git入門 コマンドライン演習80", url: "https://www.amazon.co.jp/dp/4798066338", state: "学習中", read: 114, pages: 328, comment: "Gitを基礎から学習中です。" },
     { title: "Learn Git Branching", url: "https://learngitbranching.js.org/?locale=ja", note: "Web教材", state: "学習中", read: 7, pages: 20, comment: "GitをコマンドとGUIで学習できるサイトです。" }
   ]},
   { genre: "Python", items: [
@@ -32,7 +32,7 @@ window.LEARNING = [
   ]},
   { genre: "FE試験", items: [
     { title: "令和03年 栢木先生の基本情報技術者教室", url: "https://www.amazon.co.jp/dp/B08P6Z2F4N", state: "読了", comment: "部分的な興味はあるものの幅の広さに挫折" },
-    { title: "令和06年 基本情報技術者 パーフェクトラーニング過去問題集", url: "https://www.amazon.co.jp/dp/4297138832", state: "学習中", read: 76, pages: 392, comment: "改めて学習中、9月6日に試験を受けます。" }
+    { title: "令和06年 基本情報技術者 パーフェクトラーニング過去問題集", url: "https://www.amazon.co.jp/dp/4297138832", state: "学習中", read: 108, pages: 392, comment: "改めて学習中、9月6日に試験を受けます。" }
   ]},
   { genre: "DB", items: [
     { title: "1週間でMySQLの基礎が学べる本", url: "https://www.amazon.co.jp/dp/4295012556", state: "学習中", read: 58, pages: 312, comment: "" }
