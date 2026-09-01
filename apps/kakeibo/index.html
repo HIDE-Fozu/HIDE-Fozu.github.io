@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>経理の家計簿 | 佐藤秀明</title>
-<meta name="description" content="カレンダーを起点に、その日の支出・収入を確認してすばやく入力できるiOS向け家計簿アプリ。Flutter製。財務データを自動的に端末外へ送らない設計です。">
+<meta name="description" content="カレンダーを起点に、その日の支出・収入を確認・入力できる家計簿アプリです。">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="佐藤秀明 ポートフォリオ">
 <meta property="og:title" content="経理の家計簿 | 佐藤秀明">
-<meta property="og:description" content="カレンダー起点で日々の収支を入力・確認できるiOS向け家計簿アプリ。財務データを自動的に端末外へ送らない設計です。">
+<meta property="og:description" content="カレンダーを起点に、その日の支出・収入を確認・入力できる家計簿アプリです。">
 <meta property="og:image" content="https://fozu.jp/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
@@ -34,7 +34,7 @@
   <div class="wrap page-head">
     <span class="eyebrow">Mobile App</span>
     <h1>経理の家計簿</h1>
-    <p class="lead">カレンダーを起点に、その日の支出・収入を確認して、そのまますばやく入力できる個人向けの家計簿アプリです。</p>
+    <p class="lead">カレンダーを起点に、その日の支出・収入を確認・入力できる家計簿アプリです。</p>
     <dl class="detail-meta">
       <div><dt>種別</dt><dd>iOSアプリ</dd></div>
       <div><dt>技術</dt><dd>Flutter / Dart・Riverpod・SQLite (drift)</dd></div>
@@ -46,8 +46,10 @@
   <section class="section">
     <div class="wrap prose">
       <h2>概要</h2>
-      <p>家計簿が続かない理由の多くは「入力が面倒」であることだと考え、月カレンダーの画面から日付をたどってそのまま入力できる形にしました。その日にいくら使ったのかがカレンダー上で見えるので、入力と振り返りが同じ画面で完結します。</p>
-      <p>設計上の原則として、アプリは財務データを自動的・バックグラウンド的に外部サービスへ送信しません。データが端末の外に出るのは、利用者自身が明示的にエクスポート操作をしたときだけです。</p>
+      <p>母親からの「カレンダー起点の家計簿アプリが欲しい」という希望と、自分自身が理想とする家計簿アプリが無かったことから開発を始めました。<br>
+      経理としての経験、数字に対する厳密さという自分の強みを活かして「カード支払い」や「現金・振込」、「チャージ・予算」での支払い区分を分け。<br>
+      持っている現金が月末にいくら残るのか「現金主義」として明確に算出できるアプリを目指しています。<br>
+      一般的な「発生主義」の家計簿として、「今月いくら使ったのか」が分かるモードも備えています。</p>
     </div>
   </section>
 
