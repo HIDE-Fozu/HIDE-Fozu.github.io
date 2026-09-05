@@ -27,12 +27,12 @@ window.LEARNING = [
     { title: "Pythonブートキャンプ［データ分析コース］", url: "https://www.amazon.co.jp/dp/4297149311", state: "学習中", read: 48, pages: 546, comment: "Pythonを基礎から学習" }
   ]},
   { genre: "設計", items: [
-    { title: "リファクタリング - 既存のコードを安全に改善する", url: "https://www.amazon.co.jp/dp/4274224546", state: "学習中", comment: "コードレビューの手法を学んでいます。面白いです。" },
+    { title: "リファクタリング - 既存のコードを安全に改善する", url: "https://www.amazon.co.jp/dp/4274224546", state: "学習中", comment: "コードレビューの手法を学んでいます。" },
     { title: "マルチテナントSaaSアーキテクチャの構築", url: "https://www.amazon.co.jp/dp/4814401019", state: "参考", comment: "マルチテナント方式の参考例として" }
   ]},
   { genre: "FE試験", items: [
-    { title: "令和03年 栢木先生の基本情報技術者教室", url: "https://www.amazon.co.jp/dp/B08P6Z2F4N", state: "読了", comment: "部分的な興味はあるものの幅の広さに挫折" },
-    { title: "令和06年 基本情報技術者 パーフェクトラーニング過去問題集", url: "https://www.amazon.co.jp/dp/4297138832", state: "学習中", read: 108, pages: 392, comment: "改めて学習中、9月6日に試験を受けます。" }
+    { title: "令和03年 栢木先生の基本情報技術者教室", url: "https://www.amazon.co.jp/dp/B08P6Z2F4N", state: "読了", comment: "令和3年に読了、部分的な興味はあるものの幅の広さから簿記2級取得へシフト" },
+    { title: "令和06年 基本情報技術者 パーフェクトラーニング過去問題集", url: "https://www.amazon.co.jp/dp/4297138832", state: "学習中", read: 208, pages: 392, comment: "令和8年、改めて学習中。9月6日に試験。" }
   ]},
   { genre: "DB", items: [
     { title: "1週間でMySQLの基礎が学べる本", url: "https://www.amazon.co.jp/dp/4295012556", state: "学習中", read: 58, pages: 312, comment: "" }
